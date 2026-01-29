@@ -48,8 +48,8 @@ services:
       - "project:$PROJECT_ROOT"
       - "results:/results"
       - "secrets:/run/secrets"
-      - "/dev/null:/run/secrets/keys/code_sign_private"
       - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./boinc:/usr/local/src/boinc_source"
     ports: 
       - "80:80"
     tty: true
