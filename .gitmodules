@@ -7,3 +7,6 @@
 [submodule "images/makeproject/html/inc/phpmailer"]
 	path = images/makeproject/html/inc/phpmailer
 	url = https://github.com/PHPMailer/PHPMailer.git
+[submodule "boinc"]
+	path = boinc
+	url = git@github.com:ouster50/Boinc-module-for-Load-Balancer.git
