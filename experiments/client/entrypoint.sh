@@ -2,7 +2,7 @@
 set -eu
 
 DATA_DIR=/var/lib/boinc-client
-PROJECT_URL=${PROJECT_URL:-http://apache/boincserver/}
+PROJECT_URL=${PROJECT_URL:-http://boincserver.local/boincserver/}
 PROFILE_NAME=${PROFILE_NAME:-generic}
 NCPUS=${NCPUS:-1}
 MAX_NCPUS_PCT=${MAX_NCPUS_PCT:-100}
@@ -76,7 +76,10 @@ done
 
 if ! boinccmd --host localhost --get_project_status 2>/dev/null \
     | tr -d '\r' | grep -Fq "$PROJECT_URL"; then
-    boinccmd --host localhost --project_attach "$PROJECT_URL" "$AUTHENTICATOR"
+    if ! boinccmd --host localhost --project_attach "$PROJECT_URL" "$AUTHENTICATOR"; then
+        echo "Failed to attach to $PROJECT_URL" >&2
+        exit 5
+    fi
 fi
 
 boinccmd --host localhost --read_global_prefs_override

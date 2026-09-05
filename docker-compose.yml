@@ -44,6 +44,10 @@ services:
     hostname: $PROJECT
     depends_on:
       - mysql
+    networks:
+      default:
+        aliases:
+          - boincserver.local
     volumes: 
       - "project:$PROJECT_ROOT"
       - "results:/results"
@@ -67,7 +71,7 @@ services:
     depends_on:
       - apache
     environment:
-      PROJECT_URL: ${PROJECT_URL:-http://apache/boincserver/}
+      PROJECT_URL: ${PROJECT_URL:-http://boincserver.local/boincserver/}
       AUTHENTICATOR: ${EXPERIMENT_AUTHENTICATOR:-}
       PROFILE_NAME: cluster
       NCPUS: "4"
@@ -86,7 +90,7 @@ services:
     depends_on:
       - apache
     environment:
-      PROJECT_URL: ${PROJECT_URL:-http://apache/boincserver/}
+      PROJECT_URL: ${PROJECT_URL:-http://boincserver.local/boincserver/}
       AUTHENTICATOR: ${EXPERIMENT_AUTHENTICATOR:-}
       PROFILE_NAME: desktop
       NCPUS: "2"
@@ -105,7 +109,7 @@ services:
     depends_on:
       - apache
     environment:
-      PROJECT_URL: ${PROJECT_URL:-http://apache/boincserver/}
+      PROJECT_URL: ${PROJECT_URL:-http://boincserver.local/boincserver/}
       AUTHENTICATOR: ${EXPERIMENT_AUTHENTICATOR:-}
       PROFILE_NAME: low-power
       NCPUS: "1"
@@ -124,7 +128,7 @@ services:
     depends_on:
       - apache
     environment:
-      PROJECT_URL: ${PROJECT_URL:-http://apache/boincserver/}
+      PROJECT_URL: ${PROJECT_URL:-http://boincserver.local/boincserver/}
       AUTHENTICATOR: ${EXPERIMENT_AUTHENTICATOR:-}
       PROFILE_NAME: phone
       NCPUS: "1"

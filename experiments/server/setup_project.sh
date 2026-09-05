@@ -121,4 +121,10 @@ bin/xadd
 # `yes` dies of SIGPIPE and aborts the script after a successful update.
 bin/update_versions --noconfirm
 
+APP_FILENAME="${APP_NAME}_${APP_VERSION}_${PLATFORM}"
+if [[ ! -f "$PROJECT_DIR/download/$APP_FILENAME" ]]; then
+    cp "$APP_DIR/$APP_FILENAME" "$PROJECT_DIR/download/$APP_FILENAME"
+fi
+chmod a+r "$PROJECT_DIR/download/$APP_FILENAME"
+
 echo "Installed $APP_NAME $APP_VERSION for $PLATFORM in $PROJECT_DIR"

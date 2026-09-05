@@ -47,12 +47,12 @@ RUN cd /usr/local/boinc && ./_autosetup && ./configure --disable-client --disabl
 
 # project-making scripts
 COPY images/makeproject/makeproject-step1.sh images/makeproject/makeproject-step2.sh /usr/local/bin/
+COPY images/makeproject/secrets.env /usr/local/share/boinc-secrets.env
 
 # some other project files (some of which will be put in the correct place with
 # ONBUILD instructions later)
 COPY --chown=1000 images/makeproject/db_dump_spec.xml /.project_root/
 COPY --chown=1000 images/makeproject/html /.project_root/html/
-COPY --chown=1000 images/makeproject/secrets.env /run/secrets/
 
 #===========================
 FROM base AS makeproject
@@ -76,6 +76,7 @@ ONBUILD RUN adduser $BOINC_USER --disabled-password --gecos ""
 
 # ensure the project/secrets volumes have the right permissions when mounted
 ONBUILD RUN mkdir $PROJECT_ROOT.dst && chown $BOINC_USER:$BOINC_USER $PROJECT_ROOT.dst
+ONBUILD RUN mkdir -p /run/secrets && chown $BOINC_USER:$BOINC_USER /run/secrets
 
 ONBUILD USER $BOINC_USER
 

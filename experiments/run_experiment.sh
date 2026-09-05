@@ -16,7 +16,6 @@ RUN_TIMEOUT_SECONDS=${RUN_TIMEOUT_SECONDS:-1800}
 SHORT_JOBS=${SHORT_JOBS:-12}
 MEDIUM_JOBS=${MEDIUM_JOBS:-8}
 LONG_JOBS=${LONG_JOBS:-4}
-DB_PASSWD=${DB_PASSWD:-password}
 PAIR_ID=${PAIR_ID:-$(date -u +%Y%m%dT%H%M%SZ)}
 KEEP_STACK=${KEEP_STACK:-0}
 
@@ -82,6 +81,198 @@ wait_for_project() {
     return 1
 }
 
+boinc_exec() {
+    compose exec -T apache su -s /bin/bash "${BOINC_USER:-boincadm}" -c \
+        "cd \"${PROJECT_ROOT:-/home/boincadm/project}\" && $*"
+}
+
+DB_CFG_LOADED=0
+DB_HOST=
+DB_USER=
+DB_PASSWD=
+DB_NAME=
+
+load_db_config() {
+    if (( DB_CFG_LOADED )); then
+        return 0
+    fi
+
+    local config_xml
+    config_xml=$(
+        compose exec -T apache cat "${PROJECT_ROOT:-/home/boincadm/project}/config.xml" 2>/dev/null \
+            | tr -d '\r'
+    )
+    if [[ -z "$config_xml" ]]; then
+        echo "Could not read ${PROJECT_ROOT}/config.xml from apache container" >&2
+        return 1
+    fi
+
+    local parsed
+    parsed=$(
+        printf '%s' "$config_xml" | python3 -c "
+import sys
+import xml.etree.ElementTree as ET
+
+root = ET.parse(sys.stdin).getroot()
+cfg = root.find('config')
+if cfg is None:
+    cfg = root
+
+def cfg_text(tag, default=''):
+    value = cfg.findtext(tag)
+    return default if value is None else value
+
+print(
+    '\t'.join(
+        (
+            cfg_text('db_host', 'mysql'),
+            cfg_text('db_user', 'root'),
+            cfg_text('db_passwd', ''),
+            cfg_text('db_name', 'boincserver'),
+        )
+    ),
+    end='',
+)
+"
+    )
+    IFS=$'\t' read -r DB_HOST DB_USER DB_PASSWD DB_NAME <<< "$parsed"
+    DB_NAME=${DB_NAME:-${PROJECT:-boincserver}}
+    if [[ -z "$DB_PASSWD" || "$DB_PASSWD" == \$\{db_passwd\} || "$DB_PASSWD" == \$\{DB_PASSWD\} ]]; then
+        if [[ -f "$ROOT_DIR/images/makeproject/secrets.env" ]]; then
+            # shellcheck disable=SC1091
+            source "$ROOT_DIR/images/makeproject/secrets.env"
+            DB_PASSWD=${DB_PASSWD:-password}
+        else
+            DB_PASSWD=password
+        fi
+    fi
+    DB_CFG_LOADED=1
+}
+
+# Run SQL using credentials from config.xml. Parse XML on the host (python3);
+# the apache image has mysql client but not python3.
+mysql_query() {
+    local sql=$1
+    load_db_config || return 1
+    compose exec -T -e MYSQL_PWD="$DB_PASSWD" apache \
+        mysql -h "$DB_HOST" -u "$DB_USER" "$DB_NAME" -N -e "$sql"
+}
+
+mysql_query_batch() {
+    local sql=$1
+    load_db_config || return 1
+    compose exec -T -e MYSQL_PWD="$DB_PASSWD" apache \
+        mysql -h "$DB_HOST" -u "$DB_USER" "$DB_NAME" -B -e "$sql"
+}
+
+show_db_password_hint() {
+    load_db_config || true
+    echo "config.xml db_host=${DB_HOST:-?} db_name=${DB_NAME:-?} db_passwd=${DB_PASSWD:-<empty>}" >&2
+    if [[ -z "${DB_PASSWD:-}" || "$DB_PASSWD" == \$\{db_passwd\} || "$DB_PASSWD" == \$\{DB_PASSWD\} ]]; then
+        echo "Password placeholder was not substituted. Recreate volumes:" >&2
+        echo "  docker compose down -v && SKIP_BUILD=1 ./experiments/run_experiment.sh baseline" >&2
+    fi
+}
+
+wait_for_feeder() {
+    local attempt
+    for ((attempt=1; attempt<=60; attempt++)); do
+        if boinc_exec \
+            'h=$(hostname -s); test -f "pid_${h}/feeder.pid" && kill -0 "$(cat "pid_${h}/feeder.pid")" 2>/dev/null'; then
+            sleep 3
+            echo "BOINC feeder is running." >&2
+            return 0
+        fi
+        sleep 2
+    done
+    echo "BOINC feeder did not start. Daemon status:" >&2
+    boinc_exec 'bin/status -v' >&2 || true
+    return 1
+}
+
+wait_for_start_idle() {
+    local attempt
+    for ((attempt=1; attempt<=90; attempt++)); do
+        if boinc_exec 'h=$(hostname -s); test ! -e "pid_${h}/start.lock.${h}"'; then
+            return 0
+        fi
+        sleep 1
+    done
+    echo "Timed out waiting for bin/start to finish" >&2
+    return 1
+}
+
+restart_boinc_daemons() {
+    echo "Restarting BOINC daemons..." >&2
+    boinc_exec 'bin/stop' >/dev/null 2>&1 || true
+    sleep 2
+    wait_for_start_idle || true
+
+    local attempt output
+    for ((attempt=1; attempt<=30; attempt++)); do
+        if output=$(boinc_exec 'bin/start -v --enable' 2>&1); then
+            [[ -n "$output" ]] && printf '%s\n' "$output" >&2
+            wait_for_feeder
+            return 0
+        fi
+        if [[ "$output" == *"start is currently running"* ]]; then
+            sleep 2
+            continue
+        fi
+        printf '%s\n' "$output" >&2
+        return 1
+    done
+    echo "Could not start BOINC daemons: bin/start lock still held" >&2
+    boinc_exec 'bin/status -v' >&2 || true
+    return 1
+}
+
+ensure_app_downloadable() {
+    local platform app_file
+    case "$(compose exec -T apache uname -m 2>/dev/null | tr -d '\r')" in
+        x86_64) platform=x86_64-pc-linux-gnu ;;
+        aarch64|arm64) platform=aarch64-unknown-linux-gnu ;;
+        *) platform=aarch64-unknown-linux-gnu ;;
+    esac
+    app_file="hybrid_synthetic_1.0_${platform}"
+
+    # Re-run update_versions from apache so the app lands in download/ with the
+    # same ownership/permissions as input files staged by create_workload.
+    boinc_exec 'bin/update_versions --noconfirm' >/dev/null
+    boinc_exec "test -f apps/hybrid_synthetic/1.0/${platform}/${app_file}" \
+        || { echo "App source missing: ${app_file}" >&2; return 1; }
+    boinc_exec "test -f download/${app_file} || cp apps/hybrid_synthetic/1.0/${platform}/${app_file} download/${app_file}"
+    boinc_exec "chmod a+r download/${app_file}"
+
+    if ! boinc_exec "test -f download/${app_file}"; then
+        echo "App binary missing from download/: ${app_file}" >&2
+        boinc_exec 'ls -la download/ | head -20' >&2 || true
+        return 1
+    fi
+    if ! curl -fsS -o /dev/null "http://127.0.0.1/${PROJECT}/download/${app_file}"; then
+        echo "App binary not reachable at http://127.0.0.1/${PROJECT}/download/${app_file}" >&2
+        return 1
+    fi
+    echo "App download OK: ${app_file}" >&2
+}
+
+count_experiment_results() {
+    local mode=$1
+    local sql=
+    case "$mode" in
+        validated)
+            sql="SELECT COUNT(DISTINCT w.id) FROM result r JOIN workunit w ON w.id=r.workunitid WHERE w.name LIKE 'exp_${RUN_ID}_%' AND r.received_time>0 AND r.outcome=1 AND r.exit_status=0;"
+            ;;
+        received)
+            sql="SELECT COUNT(DISTINCT w.id) FROM result r JOIN workunit w ON w.id=r.workunitid WHERE w.name LIKE 'exp_${RUN_ID}_%' AND r.received_time>0;"
+            ;;
+        *)
+            return 1
+            ;;
+    esac
+    mysql_query "$sql" | tr -d '\r'
+}
+
 set_up_account() {
     local email=$1
     local password=experiment
@@ -142,11 +333,13 @@ run_churn() {
 }
 
 export PROJECT=${PROJECT:-boincserver}
+export BOINC_USER=${BOINC_USER:-boincadm}
+export PROJECT_ROOT=${PROJECT_ROOT:-/home/boincadm/project}
 # Clients run inside the compose network and must follow scheduler/download URLs
 # baked into config.xml during project creation. 127.0.0.1 only works for BOINC
 # clients on the host machine, not for containers talking to the apache service.
-export URL_BASE=${URL_BASE:-http://apache}
-export PROJECT_URL=${PROJECT_URL:-http://apache/${PROJECT}/}
+export URL_BASE=${URL_BASE:-http://boincserver.local}
+export PROJECT_URL=${PROJECT_URL:-http://boincserver.local/${PROJECT}/}
 
 if [[ ${SKIP_BUILD:-0} != 1 ]]; then
     compose --profile experiment build \
@@ -167,16 +360,22 @@ for POLICY in "${POLICIES[@]}"; do
 
     compose up -d mysql makeproject apache
     wait_for_project
+    if ! mysql_query "SELECT 1;" >/dev/null; then
+        echo "Cannot query MySQL using credentials from config.xml." >&2
+        show_db_password_hint
+        exit 5
+    fi
 
     ship_experiment | compose run --rm -T --no-deps \
         -e MAX_WUS_TO_SEND="$MAX_WUS_TO_SEND" \
         -e MAX_WUS_IN_PROGRESS="$MAX_WUS_IN_PROGRESS" \
         makeproject \
         bash -c "$UNPACK_EXPERIMENT && bash /tmp/experiment/server/setup_project.sh"
-    compose restart apache >/dev/null
     wait_for_project
+    ensure_app_downloadable
     ship_experiment | compose exec -T apache \
         bash -c "$UNPACK_EXPERIMENT && bash /tmp/experiment/server/set_policy.sh $POLICY"
+    restart_boinc_daemons
 
     EMAIL="experiment-${RUN_ID}@example.invalid"
     EXPERIMENT_AUTHENTICATOR=$(set_up_account "$EMAIL")
@@ -185,6 +384,16 @@ for POLICY in "${POLICIES[@]}"; do
         exit 4
     fi
     export EXPERIMENT_AUTHENTICATOR
+
+    ship_experiment | compose exec -T \
+        -e RUN_ID="$RUN_ID" \
+        -e SHORT_JOBS="$SHORT_JOBS" \
+        -e MEDIUM_JOBS="$MEDIUM_JOBS" \
+        -e LONG_JOBS="$LONG_JOBS" \
+        -e ESTIMATE_PROFILE="$ESTIMATE_PROFILE" \
+        apache \
+        bash -c "$UNPACK_EXPERIMENT && bash /tmp/experiment/server/create_workload.sh"
+    boinc_exec 'touch reread_db' >/dev/null 2>&1 || true
 
     compose --profile experiment up -d --force-recreate \
         client-cluster client-desktop client-low-power client-phone
@@ -196,52 +405,35 @@ for POLICY in "${POLICIES[@]}"; do
     sample_container_stats &
     SAMPLER_PID=$!
 
-    # All clients are online before publishing work, avoiding first-client
-    # hoarding. Server-side per-RPC and in-progress limits provide a hard cap.
     sleep 10
-    ship_experiment | compose exec -T \
-        -e RUN_ID="$RUN_ID" \
-        -e SHORT_JOBS="$SHORT_JOBS" \
-        -e MEDIUM_JOBS="$MEDIUM_JOBS" \
-        -e LONG_JOBS="$LONG_JOBS" \
-        -e ESTIMATE_PROFILE="$ESTIMATE_PROFILE" \
-        apache \
-        bash -c "$UNPACK_EXPERIMENT && bash /tmp/experiment/server/create_workload.sh"
 
     run_churn &
     CHURN_PID=$!
 
     TOTAL_JOBS=$((SHORT_JOBS + MEDIUM_JOBS + LONG_JOBS))
     DEADLINE=$(( $(date +%s) + RUN_TIMEOUT_SECONDS ))
-    COMPLETED=0
+    RECEIVED=0
+    VALIDATED=0
     WAIT_STARTED=$(date +%s)
     while (( $(date +%s) < DEADLINE )); do
-        COMPLETED=0
-        if completed_raw=$(compose exec -T mysql \
-            mysql -N -uroot -p"$DB_PASSWD" "$PROJECT" -e "
-                SELECT COUNT(*)
-                FROM result r
-                JOIN workunit w ON w.id=r.workunitid
-                WHERE w.name LIKE 'exp_${RUN_ID}_%'
-                  AND r.received_time>0
-                  AND r.outcome=1
-                  AND r.exit_status=0;" 2>/dev/null | tr -d '\r'); then
-            COMPLETED=${completed_raw:-0}
-        fi
+        RECEIVED=$(count_experiment_results received || echo 0)
+        VALIDATED=$(count_experiment_results validated || echo 0)
+        RECEIVED=${RECEIVED:-0}
+        VALIDATED=${VALIDATED:-0}
         ELAPSED=$(( $(date +%s) - WAIT_STARTED ))
-        printf 'run=%s completed=%s/%s elapsed=%ss\n' \
-            "$RUN_ID" "$COMPLETED" "$TOTAL_JOBS" "$ELAPSED"
-        (( COMPLETED >= TOTAL_JOBS )) && break
+        printf 'run=%s received=%s validated=%s/%s elapsed=%ss\n' \
+            "$RUN_ID" "$RECEIVED" "$VALIDATED" "$TOTAL_JOBS" "$ELAPSED"
+        (( VALIDATED >= TOTAL_JOBS )) && break
         sleep 5
     done
+    COMPLETED=$VALIDATED
 
     wait "$CHURN_PID" || true
     FINISHED_AT=$(epoch_now)
     rm -f "$RUN_DIR/.sampling"
     wait "$SAMPLER_PID" || true
 
-    compose exec -T mysql \
-        mysql -B -uroot -p"$DB_PASSWD" "$PROJECT" -e "
+    mysql_query_batch "
             SELECT
                 r.id AS result_id,
                 r.name AS result_name,
@@ -276,8 +468,7 @@ for POLICY in "${POLICIES[@]}"; do
             ORDER BY w.id, r.id;" \
         > "$RUN_DIR/raw/tasks.tsv"
 
-    compose exec -T mysql \
-        mysql -B -uroot -p"$DB_PASSWD" "$PROJECT" -e "
+    mysql_query_batch "
             SELECT id, domain_name, p_ncpus, p_fpops, m_nbytes,
                    on_frac, connected_frac, active_frac, cpu_efficiency,
                    avg_turnaround, error_rate
