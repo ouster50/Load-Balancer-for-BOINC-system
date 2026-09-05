@@ -1,0 +1,9 @@
+.git
+**/.git
+**/.gitmodules
+results
+experiments/results
+
+# upstream submodule: the server is built from ./boinc instead
+images/makeproject/boinc
+images/makeproject/boinc2docker/build

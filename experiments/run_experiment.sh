@@ -41,11 +41,29 @@ for command in docker curl python3; do
         exit 3
     }
 done
-docker compose version >/dev/null
+
+if docker compose version >/dev/null 2>&1; then
+    compose() { docker compose "$@"; }
+elif command -v docker-compose >/dev/null 2>&1; then
+    compose() { docker-compose "$@"; }
+else
+    echo "Missing required command: docker compose" >&2
+    exit 3
+fi
+compose version >/dev/null
 
 epoch_now() {
     python3 -c 'import time; print(time.time())'
 }
+
+# The server-side scripts are streamed into the containers as a tar archive on
+# stdin instead of being bind-mounted: VM-backed Docker daemons do not always
+# share the host directory, which leaves the mount point empty.
+ship_experiment() {
+    # macOS tar embeds xattr metadata that Linux tar warns about; harmless but noisy.
+    COPYFILE_DISABLE=1 tar -cf - -C "$ROOT_DIR/experiments" .
+}
+UNPACK_EXPERIMENT='rm -rf /tmp/experiment && mkdir -p /tmp/experiment && tar -xf - -C /tmp/experiment'
 
 record_event() {
     printf '%s,%s,%s\n' "$(epoch_now)" "$1" "$2" >> "$EVENTS_FILE"
@@ -101,21 +119,21 @@ run_churn() {
             ;;
         moderate)
             sleep "$CHURN_ONLINE_SECONDS"
-            docker compose --profile experiment stop client-phone >/dev/null
+            compose --profile experiment stop client-phone >/dev/null
             record_event phone-01 stop
             sleep "$CHURN_OFFLINE_SECONDS"
-            docker compose --profile experiment start client-phone >/dev/null
+            compose --profile experiment start client-phone >/dev/null
             record_event phone-01 restart
             ;;
         heavy)
             local cycle
             for ((cycle=1; cycle<=CHURN_CYCLES; cycle++)); do
                 sleep "$CHURN_ONLINE_SECONDS"
-                docker compose --profile experiment stop client-phone client-low-power >/dev/null
+                compose --profile experiment stop client-phone client-low-power >/dev/null
                 record_event phone-01 stop
                 record_event low-power-01 stop
                 sleep "$CHURN_OFFLINE_SECONDS"
-                docker compose --profile experiment start client-phone client-low-power >/dev/null
+                compose --profile experiment start client-phone client-low-power >/dev/null
                 record_event phone-01 restart
                 record_event low-power-01 restart
             done
@@ -124,10 +142,14 @@ run_churn() {
 }
 
 export PROJECT=${PROJECT:-boincserver}
+# Clients run inside the compose network and must follow scheduler/download URLs
+# baked into config.xml during project creation. 127.0.0.1 only works for BOINC
+# clients on the host machine, not for containers talking to the apache service.
+export URL_BASE=${URL_BASE:-http://apache}
 export PROJECT_URL=${PROJECT_URL:-http://apache/${PROJECT}/}
 
 if [[ ${SKIP_BUILD:-0} != 1 ]]; then
-    docker compose --profile experiment build \
+    compose --profile experiment build \
         mysql makeproject apache client-cluster
 fi
 
@@ -140,21 +162,21 @@ for POLICY in "${POLICIES[@]}"; do
     mkdir -p "$RUN_DIR"/{raw,config,analysis,clients}
     printf 'timestamp,node,action\n' > "$EVENTS_FILE"
 
-    docker compose --profile experiment down -v --remove-orphans >/dev/null 2>&1 || true
+    compose --profile experiment down -v --remove-orphans >/dev/null 2>&1 || true
     STARTED_AT=$(epoch_now)
 
-    docker compose up -d mysql makeproject apache
+    compose up -d mysql makeproject apache
     wait_for_project
 
-    docker compose run --rm --no-deps \
+    ship_experiment | compose run --rm -T --no-deps \
         -e MAX_WUS_TO_SEND="$MAX_WUS_TO_SEND" \
         -e MAX_WUS_IN_PROGRESS="$MAX_WUS_IN_PROGRESS" \
         makeproject \
-        bash /experiment/server/setup_project.sh
-    docker compose restart apache >/dev/null
+        bash -c "$UNPACK_EXPERIMENT && bash /tmp/experiment/server/setup_project.sh"
+    compose restart apache >/dev/null
     wait_for_project
-    docker compose exec -T apache \
-        bash /experiment/server/set_policy.sh "$POLICY"
+    ship_experiment | compose exec -T apache \
+        bash -c "$UNPACK_EXPERIMENT && bash /tmp/experiment/server/set_policy.sh $POLICY"
 
     EMAIL="experiment-${RUN_ID}@example.invalid"
     EXPERIMENT_AUTHENTICATOR=$(set_up_account "$EMAIL")
@@ -164,7 +186,7 @@ for POLICY in "${POLICIES[@]}"; do
     fi
     export EXPERIMENT_AUTHENTICATOR
 
-    docker compose --profile experiment up -d \
+    compose --profile experiment up -d --force-recreate \
         client-cluster client-desktop client-low-power client-phone
     for node in cluster-01 desktop-01 low-power-01 phone-01; do
         record_event "$node" start
@@ -177,13 +199,14 @@ for POLICY in "${POLICIES[@]}"; do
     # All clients are online before publishing work, avoiding first-client
     # hoarding. Server-side per-RPC and in-progress limits provide a hard cap.
     sleep 10
-    docker compose exec -T \
+    ship_experiment | compose exec -T \
         -e RUN_ID="$RUN_ID" \
         -e SHORT_JOBS="$SHORT_JOBS" \
         -e MEDIUM_JOBS="$MEDIUM_JOBS" \
         -e LONG_JOBS="$LONG_JOBS" \
         -e ESTIMATE_PROFILE="$ESTIMATE_PROFILE" \
-        apache bash /experiment/server/create_workload.sh
+        apache \
+        bash -c "$UNPACK_EXPERIMENT && bash /tmp/experiment/server/create_workload.sh"
 
     run_churn &
     CHURN_PID=$!
@@ -191,8 +214,10 @@ for POLICY in "${POLICIES[@]}"; do
     TOTAL_JOBS=$((SHORT_JOBS + MEDIUM_JOBS + LONG_JOBS))
     DEADLINE=$(( $(date +%s) + RUN_TIMEOUT_SECONDS ))
     COMPLETED=0
+    WAIT_STARTED=$(date +%s)
     while (( $(date +%s) < DEADLINE )); do
-        COMPLETED=$(docker compose exec -T mysql \
+        COMPLETED=0
+        if completed_raw=$(compose exec -T mysql \
             mysql -N -uroot -p"$DB_PASSWD" "$PROJECT" -e "
                 SELECT COUNT(*)
                 FROM result r
@@ -200,9 +225,12 @@ for POLICY in "${POLICIES[@]}"; do
                 WHERE w.name LIKE 'exp_${RUN_ID}_%'
                   AND r.received_time>0
                   AND r.outcome=1
-                  AND r.exit_status=0;" 2>/dev/null | tr -d '\r')
-        COMPLETED=${COMPLETED:-0}
-        printf 'run=%s completed=%s/%s\n' "$RUN_ID" "$COMPLETED" "$TOTAL_JOBS"
+                  AND r.exit_status=0;" 2>/dev/null | tr -d '\r'); then
+            COMPLETED=${completed_raw:-0}
+        fi
+        ELAPSED=$(( $(date +%s) - WAIT_STARTED ))
+        printf 'run=%s completed=%s/%s elapsed=%ss\n' \
+            "$RUN_ID" "$COMPLETED" "$TOTAL_JOBS" "$ELAPSED"
         (( COMPLETED >= TOTAL_JOBS )) && break
         sleep 5
     done
@@ -212,7 +240,7 @@ for POLICY in "${POLICIES[@]}"; do
     rm -f "$RUN_DIR/.sampling"
     wait "$SAMPLER_PID" || true
 
-    docker compose exec -T mysql \
+    compose exec -T mysql \
         mysql -B -uroot -p"$DB_PASSWD" "$PROJECT" -e "
             SELECT
                 r.id AS result_id,
@@ -248,7 +276,7 @@ for POLICY in "${POLICIES[@]}"; do
             ORDER BY w.id, r.id;" \
         > "$RUN_DIR/raw/tasks.tsv"
 
-    docker compose exec -T mysql \
+    compose exec -T mysql \
         mysql -B -uroot -p"$DB_PASSWD" "$PROJECT" -e "
             SELECT id, domain_name, p_ncpus, p_fpops, m_nbytes,
                    on_frac, connected_frac, active_frac, cpu_efficiency,
@@ -256,18 +284,18 @@ for POLICY in "${POLICIES[@]}"; do
             FROM host ORDER BY id;" \
         > "$RUN_DIR/raw/hosts.tsv"
 
-    docker compose exec -T apache sh -c \
+    compose exec -T apache sh -c \
         'cat "$PROJECT_ROOT"/log_* 2>/dev/null || true' \
         > "$RUN_DIR/raw/scheduler.log"
-    docker compose --profile experiment logs --no-color \
-        > "$RUN_DIR/raw/docker-compose.log" 2>&1
-    docker compose logs --no-color apache 2>&1 \
+    compose --profile experiment logs --no-color \
+        > "$RUN_DIR/raw/compose.log" 2>&1
+    compose logs --no-color apache 2>&1 \
         >> "$RUN_DIR/raw/scheduler.log"
-    docker compose exec -T apache cat \
+    compose exec -T apache cat \
         "/home/boincadm/project/config.xml" > "$RUN_DIR/config/config.xml"
 
     for service in mysql makeproject apache client-cluster client-desktop client-low-power client-phone; do
-        container_id=$(docker compose --profile experiment ps -aq "$service" | tr -d '\r')
+        container_id=$(compose --profile experiment ps -aq "$service" | tr -d '\r')
         if [[ -n "$container_id" ]]; then
             docker inspect "$container_id" > "$RUN_DIR/raw/${service}-inspect.json"
         fi
@@ -347,7 +375,7 @@ PY
     fi
 
     if [[ "$KEEP_STACK" != 1 ]]; then
-        docker compose --profile experiment down -v --remove-orphans >/dev/null
+        compose --profile experiment down -v --remove-orphans >/dev/null
     fi
 done
 

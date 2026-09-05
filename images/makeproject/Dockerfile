@@ -1,6 +1,9 @@
-# syntax=docker/dockerfile:1.4
-# the tag this Dockerfile will build, either "-b2d" or ""
-ARG TAG
+# Build context is the repository root so the server is compiled from the
+# coursework fork in ./boinc (see docker-compose.yml).
+#
+# The boinc2docker (`-b2d`) stages of the upstream image are dropped: the
+# experiment is CPU-only, and their vboxwrapper download from
+# boinc.berkeley.edu breaks the build.
 
 #===============================
 FROM debian:buster-slim AS base
@@ -38,62 +41,21 @@ RUN apt-get update \
         nlohmann-json3-dev \
     && rm -rf /var/lib/apt/lists
 
-# get source and compile server
-COPY --from=boinc_src --chown=1000 . /usr/local/boinc
+# get source and compile server from the coursework fork
+COPY --chown=1000 boinc /usr/local/boinc
 RUN cd /usr/local/boinc && ./_autosetup && ./configure --disable-client --disable-manager && make
 
 # project-making scripts
-COPY makeproject-step1.sh makeproject-step2.sh /usr/local/bin/
+COPY images/makeproject/makeproject-step1.sh images/makeproject/makeproject-step2.sh /usr/local/bin/
 
 # some other project files (some of which will be put in the correct place with
 # ONBUILD instructions later)
-COPY --chown=1000 db_dump_spec.xml /.project_root/
-COPY --chown=1000 html /.project_root/html/
-COPY --chown=1000 secrets.env /run/secrets/
-
-#==============================
-FROM debian:buster-slim AS b2d
-#==============================
-
-# do boinc2docker as a separate stage so we don't have to keep re-downloading
-# things whenever the build cache is invalidated
-
-# fix debian buster sources.list
-RUN sed -i 's/deb.debian.org/archive.debian.org/g' /etc/apt/sources.list \
-    && sed -i 's/security.debian.org/archive.debian.org/g' /etc/apt/sources.list
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        ca-certificates \
-        python-yaml \
-        wget
-
-# the version of vboxwrapper/iso/appver installed is specified in
-# boinc2docker/boinc2docker.yml
-COPY boinc2docker /root/boinc2docker
-RUN /root/boinc2docker/boinc2docker_create_app --download_only
-
-
-
-#====================
-FROM base AS base-b2d
-#====================
-
-# copy/install extra things needed for the `-b2d` version
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        python-yaml \
-        wget \
-    && rm -rf /var/lib/apt/lists
-
-COPY --from=b2d --chown=1000 /root/boinc2docker $HOME/boinc2docker
-ENV PATH=$HOME/boinc2docker:$PATH
-
-
+COPY --chown=1000 images/makeproject/db_dump_spec.xml /.project_root/
+COPY --chown=1000 images/makeproject/html /.project_root/html/
+COPY --chown=1000 images/makeproject/secrets.env /run/secrets/
 
 #===========================
-FROM base$TAG AS makeproject
+FROM base AS makeproject
 #===========================
 
 # everything which depends on build-args is done as ONBUILD in this stage, so
@@ -120,7 +82,6 @@ ONBUILD USER $BOINC_USER
 
 # build server
 ONBUILD RUN makeproject-step1.sh
-ONBUILD RUN test -z "$TAG" || boinc2docker_create_app --projhome $PROJECT_ROOT
 ONBUILD CMD makeproject-step2.sh
 
 ONBUILD WORKDIR $PROJECT_ROOT

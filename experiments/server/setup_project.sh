@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
+EXPERIMENT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)
 APP_NAME=hybrid_synthetic
 APP_VERSION=1.0
 PROJECT_ROOT=${PROJECT_ROOT:-/home/boincadm/project}
@@ -25,19 +26,30 @@ case "$(uname -m)" in
         ;;
 esac
 
-UPPERCASE_BINARY=/usr/local/boinc/apps/.libs/uppercase
-if [[ ! -x "$UPPERCASE_BINARY" ]]; then
-    echo "Compiled BOINC uppercase app not found at $UPPERCASE_BINARY" >&2
+# apps/uppercase is built by the server tree.  Depending on how libtool links
+# it, the real ELF binary is either apps/uppercase or apps/.libs/uppercase,
+# with the other one being a wrapper shell script.
+APP_BINARY=""
+for candidate in /usr/local/boinc/apps/.libs/uppercase \
+                 /usr/local/boinc/apps/uppercase; do
+    [[ -x "$candidate" ]] || continue
+    [[ "$(head -c 2 "$candidate")" == "#!" ]] && continue
+    APP_BINARY="$candidate"
+    break
+done
+if [[ -z "$APP_BINARY" ]]; then
+    echo "Compiled BOINC uppercase app not found under /usr/local/boinc/apps" >&2
+    ls -la /usr/local/boinc/apps /usr/local/boinc/apps/.libs 2>/dev/null >&2 || true
     exit 4
 fi
 
 APP_DIR="$PROJECT_DIR/apps/$APP_NAME/$APP_VERSION/$PLATFORM"
 mkdir -p "$APP_DIR" "$PROJECT_DIR/templates"
-install -m 0755 "$UPPERCASE_BINARY" \
+install -m 0755 "$APP_BINARY" \
     "$APP_DIR/${APP_NAME}_${APP_VERSION}_${PLATFORM}"
-cp /experiment/server/templates/hybrid_synthetic_in \
+cp "$EXPERIMENT_DIR/server/templates/hybrid_synthetic_in" \
     "$PROJECT_DIR/templates/hybrid_synthetic_in"
-cp /experiment/server/templates/hybrid_synthetic_out \
+cp "$EXPERIMENT_DIR/server/templates/hybrid_synthetic_out" \
     "$PROJECT_DIR/templates/hybrid_synthetic_out"
 printf 'Hybrid BOINC load-balancer experiment\n' \
     > "$PROJECT_DIR/hybrid_synthetic_input.txt"
@@ -104,6 +116,9 @@ PY
 
 cd "$PROJECT_DIR"
 bin/xadd
-yes | bin/update_versions
+# --noconfirm accepts the unsigned-app warning without an interactive prompt.
+# `yes | bin/update_versions` cannot be used here: under `set -o pipefail`
+# `yes` dies of SIGPIPE and aborts the script after a successful update.
+bin/update_versions --noconfirm
 
 echo "Installed $APP_NAME $APP_VERSION for $PLATFORM in $PROJECT_DIR"

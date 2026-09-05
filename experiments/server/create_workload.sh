@@ -48,7 +48,7 @@ create_class() {
             --wu_name "exp_${RUN_ID}_${class_name}_${i}" \
             --wu_template templates/hybrid_synthetic_in \
             --result_template templates/hybrid_synthetic_out \
-            --command_line "--cpu_time ${cpu_seconds}" \
+            --command_line "-cpu_time ${cpu_seconds}" \
             --rsc_fpops_est "$effective_fpops_est" \
             --rsc_fpops_bound "$fpops_bound" \
             --rsc_memory_bound 134217728 \

@@ -1,5 +1,3 @@
-version: "3.4"
-
 volumes:
   mysql:
   project:
@@ -18,9 +16,8 @@ services:
   makeproject:
     image: boinc/server_makeproject:$VERSION$TAG$DEFAULTARGS
     build: 
-      context: images/makeproject
-      additional_contexts:
-        boinc_src: ./boinc
+      context: .
+      dockerfile: images/makeproject/Dockerfile
       target: makeproject$DEFAULTARGS
       args:
         - TAG
