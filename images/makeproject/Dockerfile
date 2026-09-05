@@ -1,3 +1,4 @@
+# syntax=docker/dockerfile:1.4
 # the tag this Dockerfile will build, either "-b2d" or ""
 ARG TAG
 
@@ -38,7 +39,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists
 
 # get source and compile server
-COPY --chown=1000 boinc /usr/local/boinc
+COPY --from=boinc_src --chown=1000 . /usr/local/boinc
 RUN cd /usr/local/boinc && ./_autosetup && ./configure --disable-client --disable-manager && make
 
 # project-making scripts
