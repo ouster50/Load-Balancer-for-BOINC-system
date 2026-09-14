@@ -326,6 +326,22 @@ CHURN_CLIENT_NODES=(
     phone-02
 )
 
+churn_should_stop() {
+    [[ -f "${RUN_DIR}/.churn_stop" ]]
+}
+
+churn_sleep() {
+    local remaining=$1
+    while (( remaining > 0 )); do
+        if churn_should_stop; then
+            return 1
+        fi
+        sleep 1
+        remaining=$((remaining - 1))
+    done
+    return 0
+}
+
 churn_single_client() {
     local service=$1
     local node=$2
@@ -334,16 +350,52 @@ churn_single_client() {
     local cycle
 
     if (( initial_delay > 0 )); then
-        sleep "$initial_delay"
+        churn_sleep "$initial_delay" || return 0
     fi
 
     for ((cycle=1; cycle<=cycles; cycle++)); do
-        sleep "$CHURN_ONLINE_SECONDS"
-        compose --profile experiment stop "$service" >/dev/null
+        churn_should_stop && return 0
+        churn_sleep "$CHURN_ONLINE_SECONDS" || return 0
+        churn_should_stop && return 0
+        # pause/unpause keeps BOINC alive; stop/start kills in-flight tasks and
+        # long workunits exhaust max_total_results under heavy churn.
+        compose --profile experiment pause "$service" >/dev/null
         record_event "$node" stop
-        sleep "$CHURN_OFFLINE_SECONDS"
-        compose --profile experiment start "$service" >/dev/null
+        churn_sleep "$CHURN_OFFLINE_SECONDS" || {
+            compose --profile experiment unpause "$service" >/dev/null 2>&1 || true
+            return 0
+        }
+        compose --profile experiment unpause "$service" >/dev/null
         record_event "$node" restart
+    done
+}
+
+stop_churn() {
+    if [[ "$CHURN_PROFILE" == stable ]]; then
+        return 0
+    fi
+
+    touch "$RUN_DIR/.churn_stop"
+
+    if [[ -f "$RUN_DIR/churn.pids" ]]; then
+        local pid
+        while read -r pid; do
+            if [[ -n "$pid" ]]; then
+                kill "$pid" 2>/dev/null || true
+                wait "$pid" 2>/dev/null || true
+            fi
+        done < "$RUN_DIR/churn.pids"
+    fi
+
+    if [[ -n "${CHURN_PID:-}" ]]; then
+        kill "$CHURN_PID" 2>/dev/null || true
+        wait "$CHURN_PID" 2>/dev/null || true
+    fi
+
+    local index
+    for index in "${!CHURN_CLIENT_SERVICES[@]}"; do
+        compose --profile experiment unpause "${CHURN_CLIENT_SERVICES[$index]}" \
+            >/dev/null 2>&1 || true
     done
 }
 
@@ -362,18 +414,24 @@ run_churn() {
             ;;
     esac
 
+    rm -f "$RUN_DIR/.churn_stop"
+    : > "$RUN_DIR/churn.pids"
+
     for index in "${!CHURN_CLIENT_SERVICES[@]}"; do
+        local worker_pid
         churn_single_client \
             "${CHURN_CLIENT_SERVICES[$index]}" \
             "${CHURN_CLIENT_NODES[$index]}" \
             "$cycles" \
             $(( index * CHURN_STAGGER_SECONDS )) &
-        pids+=($!)
+        worker_pid=$!
+        pids+=("$worker_pid")
+        echo "$worker_pid" >> "$RUN_DIR/churn.pids"
     done
 
     local pid
     for pid in "${pids[@]}"; do
-        wait "$pid" || true
+        wait "$pid" 2>/dev/null || true
     done
 }
 
@@ -474,7 +532,7 @@ for POLICY in "${POLICIES[@]}"; do
     done
     COMPLETED=$VALIDATED
 
-    wait "$CHURN_PID" || true
+    stop_churn
     FINISHED_AT=$(epoch_now)
     rm -f "$RUN_DIR/.sampling"
     wait "$SAMPLER_PID" || true
@@ -551,14 +609,27 @@ for POLICY in "${POLICIES[@]}"; do
 import json
 import os
 import platform
+import re
 import subprocess
 import sys
 
 def command(*args):
     try:
-        return subprocess.check_output(args, text=True).strip()
+        return subprocess.check_output(
+            args, text=True, stderr=subprocess.DEVNULL
+        ).strip()
     except Exception:
         return None
+
+def docker_compose_version():
+    short = command("docker", "compose", "version", "--short")
+    if short:
+        return short
+    full = command("docker", "compose", "version")
+    if not full:
+        return None
+    match = re.search(r"v?\d+\.\d+\.\d+", full)
+    return match.group(0) if match else full.splitlines()[0]
 
 manifest = {
     "pair_id": os.environ["PAIR_ID"],
@@ -577,7 +648,7 @@ manifest = {
     "git_commit": command("git", "rev-parse", "HEAD"),
     "git_dirty": bool(command("git", "status", "--porcelain")),
     "docker_version": command("docker", "version", "--format", "{{.Server.Version}}"),
-    "docker_compose_version": command("docker", "compose", "version", "--short"),
+    "docker_compose_version": docker_compose_version(),
     "host_platform": platform.platform(),
     "node_profiles": {
         "cluster-01": {"cpu_quota": 4.0, "ncpus": 4, "memory": "4g"},
