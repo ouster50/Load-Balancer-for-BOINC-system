@@ -27,7 +27,8 @@
 - `client-cluster-2`: 4 CPU, 4 GiB (идентичный peer для fairness among equals);
 - `client-desktop`: 2 CPU, 2 GiB;
 - `client-low-power`: 1 CPU, 1 GiB;
-- `client-phone`: 0.5 CPU, 512 MiB.
+- `client-phone`: 0.5 CPU, 512 MiB;
+- `client-phone-2`: 0.5 CPU, 512 MiB (идентичный mobile peer для churn/fairness).
 
 Каждый клиент имеет отдельный BOINC data directory и поэтому регистрируется
 как отдельный host. Гетерогенность задаётся одновременно через cgroup limits и
@@ -45,8 +46,13 @@ work buffer и доступность, но не микроархитектур�
 Профили churn:
 
 - `stable`: все hosts работают весь прогон;
-- `moderate`: phone-клиент отключается на 15 секунд;
-- `heavy`: phone и low-power трижды отключаются на 15 секунд.
+- `moderate`: у каждого клиента один цикл offline → restart;
+- `heavy`: у каждого клиента `CHURN_CYCLES` таких циклов.
+
+Отказы **рассинхронизированы**: каждый клиент крутит свой цикл в фоне, старт
+сдвинут на `index × CHURN_STAGGER_SECONDS` (по умолчанию 8 с). Пока один host
+offline, остальные могут продолжать работу. `CHURN_STAGGER_SECONDS=0` убирает
+сдвиг — все циклы стартуют одновременно.
 
 Все события записываются в `events.csv`. Основная партия workunits публикуется
 только после запуска всех клиентов.
@@ -196,7 +202,7 @@ ESTIMATE_PROFILE=mixed bash experiments/run_experiment.sh all
 
 # Управляемая длительность отказов
 CHURN_PROFILE=heavy CHURN_ONLINE_SECONDS=30 \
-CHURN_OFFLINE_SECONDS=20 CHURN_CYCLES=4 \
+CHURN_OFFLINE_SECONDS=20 CHURN_CYCLES=4 CHURN_STAGGER_SECONDS=10 \
 bash experiments/run_experiment.sh hybrid
 
 # Более короткий smoke test

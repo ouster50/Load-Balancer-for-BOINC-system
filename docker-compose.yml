@@ -158,3 +158,22 @@ services:
     mem_limit: 512m
     volumes:
       - "${RESULT_DIR:-./results/current}/clients/phone:/var/lib/boinc-client"
+
+  client-phone-2:
+    profiles: ["experiment"]
+    image: boinc/hybrid-client:latest
+    hostname: phone-02
+    depends_on:
+      - apache
+    environment:
+      PROJECT_URL: ${PROJECT_URL:-http://boincserver.local/boincserver/}
+      AUTHENTICATOR: ${EXPERIMENT_AUTHENTICATOR:-}
+      PROFILE_NAME: phone
+      NCPUS: "1"
+      MAX_NCPUS_PCT: "100"
+      WORK_BUF_MIN_DAYS: "0.0002"
+      WORK_BUF_ADDITIONAL_DAYS: "0.0002"
+    cpus: 0.5
+    mem_limit: 512m
+    volumes:
+      - "${RESULT_DIR:-./results/current}/clients/phone-2:/var/lib/boinc-client"

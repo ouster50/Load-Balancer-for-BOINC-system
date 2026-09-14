@@ -9,6 +9,7 @@ CHURN_PROFILE=${CHURN_PROFILE:-moderate}
 CHURN_ONLINE_SECONDS=${CHURN_ONLINE_SECONDS:-20}
 CHURN_OFFLINE_SECONDS=${CHURN_OFFLINE_SECONDS:-15}
 CHURN_CYCLES=${CHURN_CYCLES:-3}
+CHURN_STAGGER_SECONDS=${CHURN_STAGGER_SECONDS:-8}
 ESTIMATE_PROFILE=${ESTIMATE_PROFILE:-accurate}
 MAX_WUS_TO_SEND=${MAX_WUS_TO_SEND:-1}
 MAX_WUS_IN_PROGRESS=${MAX_WUS_IN_PROGRESS:-2}
@@ -65,7 +66,12 @@ ship_experiment() {
 UNPACK_EXPERIMENT='rm -rf /tmp/experiment && mkdir -p /tmp/experiment && tar -xf - -C /tmp/experiment'
 
 record_event() {
+    local lock_dir="${EVENTS_FILE}.lock.d"
+    while ! mkdir "$lock_dir" 2>/dev/null; do
+        sleep 0.01
+    done
     printf '%s,%s,%s\n' "$(epoch_now)" "$1" "$2" >> "$EVENTS_FILE"
+    rmdir "$lock_dir"
 }
 
 wait_for_project() {
@@ -303,33 +309,72 @@ sample_container_stats() {
     done
 }
 
+CHURN_CLIENT_SERVICES=(
+    client-cluster
+    client-cluster-2
+    client-desktop
+    client-low-power
+    client-phone
+    client-phone-2
+)
+CHURN_CLIENT_NODES=(
+    cluster-01
+    cluster-02
+    desktop-01
+    low-power-01
+    phone-01
+    phone-02
+)
+
+churn_single_client() {
+    local service=$1
+    local node=$2
+    local cycles=$3
+    local initial_delay=$4
+    local cycle
+
+    if (( initial_delay > 0 )); then
+        sleep "$initial_delay"
+    fi
+
+    for ((cycle=1; cycle<=cycles; cycle++)); do
+        sleep "$CHURN_ONLINE_SECONDS"
+        compose --profile experiment stop "$service" >/dev/null
+        record_event "$node" stop
+        sleep "$CHURN_OFFLINE_SECONDS"
+        compose --profile experiment start "$service" >/dev/null
+        record_event "$node" restart
+    done
+}
+
 run_churn() {
+    local index cycles pids=()
+
     case "$CHURN_PROFILE" in
         stable)
             return
             ;;
         moderate)
-            sleep "$CHURN_ONLINE_SECONDS"
-            compose --profile experiment stop client-phone >/dev/null
-            record_event phone-01 stop
-            sleep "$CHURN_OFFLINE_SECONDS"
-            compose --profile experiment start client-phone >/dev/null
-            record_event phone-01 restart
+            cycles=1
             ;;
         heavy)
-            local cycle
-            for ((cycle=1; cycle<=CHURN_CYCLES; cycle++)); do
-                sleep "$CHURN_ONLINE_SECONDS"
-                compose --profile experiment stop client-phone client-low-power >/dev/null
-                record_event phone-01 stop
-                record_event low-power-01 stop
-                sleep "$CHURN_OFFLINE_SECONDS"
-                compose --profile experiment start client-phone client-low-power >/dev/null
-                record_event phone-01 restart
-                record_event low-power-01 restart
-            done
+            cycles=$CHURN_CYCLES
             ;;
     esac
+
+    for index in "${!CHURN_CLIENT_SERVICES[@]}"; do
+        churn_single_client \
+            "${CHURN_CLIENT_SERVICES[$index]}" \
+            "${CHURN_CLIENT_NODES[$index]}" \
+            "$cycles" \
+            $(( index * CHURN_STAGGER_SECONDS )) &
+        pids+=($!)
+    done
+
+    local pid
+    for pid in "${pids[@]}"; do
+        wait "$pid" || true
+    done
 }
 
 export PROJECT=${PROJECT:-boincserver}
@@ -396,8 +441,9 @@ for POLICY in "${POLICIES[@]}"; do
     boinc_exec 'touch reread_db' >/dev/null 2>&1 || true
 
     compose --profile experiment up -d --force-recreate \
-        client-cluster client-cluster-2 client-desktop client-low-power client-phone
-    for node in cluster-01 cluster-02 desktop-01 low-power-01 phone-01; do
+        client-cluster client-cluster-2 client-desktop client-low-power \
+        client-phone client-phone-2
+    for node in cluster-01 cluster-02 desktop-01 low-power-01 phone-01 phone-02; do
         record_event "$node" start
     done
 
@@ -485,7 +531,7 @@ for POLICY in "${POLICIES[@]}"; do
     compose exec -T apache cat \
         "/home/boincadm/project/config.xml" > "$RUN_DIR/config/config.xml"
 
-    for service in mysql makeproject apache client-cluster client-cluster-2 client-desktop client-low-power client-phone; do
+    for service in mysql makeproject apache client-cluster client-cluster-2 client-desktop client-low-power client-phone client-phone-2; do
         container_id=$(compose --profile experiment ps -aq "$service" | tr -d '\r')
         if [[ -n "$container_id" ]]; then
             docker inspect "$container_id" > "$RUN_DIR/raw/${service}-inspect.json"
@@ -498,6 +544,7 @@ for POLICY in "${POLICIES[@]}"; do
     CHURN_ONLINE_SECONDS="$CHURN_ONLINE_SECONDS" \
     CHURN_OFFLINE_SECONDS="$CHURN_OFFLINE_SECONDS" \
     CHURN_CYCLES="$CHURN_CYCLES" \
+    CHURN_STAGGER_SECONDS="$CHURN_STAGGER_SECONDS" \
     MAX_WUS_TO_SEND="$MAX_WUS_TO_SEND" \
     MAX_WUS_IN_PROGRESS="$MAX_WUS_IN_PROGRESS" \
     PAIR_ID="$PAIR_ID" python3 - "$RUN_DIR/manifest.json" <<'PY'
@@ -520,6 +567,7 @@ manifest = {
     "churn_online_seconds": int(os.environ["CHURN_ONLINE_SECONDS"]),
     "churn_offline_seconds": int(os.environ["CHURN_OFFLINE_SECONDS"]),
     "churn_cycles": int(os.environ["CHURN_CYCLES"]),
+    "churn_stagger_seconds": int(os.environ["CHURN_STAGGER_SECONDS"]),
     "estimate_profile": os.environ["ESTIMATE_PROFILE"],
     "max_wus_to_send": int(os.environ["MAX_WUS_TO_SEND"]),
     "max_wus_in_progress": int(os.environ["MAX_WUS_IN_PROGRESS"]),
@@ -537,6 +585,7 @@ manifest = {
         "desktop-01": {"cpu_quota": 2.0, "ncpus": 2, "memory": "2g"},
         "low-power-01": {"cpu_quota": 1.0, "ncpus": 1, "memory": "1g"},
         "phone-01": {"cpu_quota": 0.5, "ncpus": 1, "memory": "512m"},
+        "phone-02": {"cpu_quota": 0.5, "ncpus": 1, "memory": "512m"},
     },
 }
 with open(sys.argv[1], "w") as target:
