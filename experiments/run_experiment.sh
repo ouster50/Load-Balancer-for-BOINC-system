@@ -396,8 +396,8 @@ for POLICY in "${POLICIES[@]}"; do
     boinc_exec 'touch reread_db' >/dev/null 2>&1 || true
 
     compose --profile experiment up -d --force-recreate \
-        client-cluster client-desktop client-low-power client-phone
-    for node in cluster-01 desktop-01 low-power-01 phone-01; do
+        client-cluster client-cluster-2 client-desktop client-low-power client-phone
+    for node in cluster-01 cluster-02 desktop-01 low-power-01 phone-01; do
         record_event "$node" start
     done
 
@@ -485,7 +485,7 @@ for POLICY in "${POLICIES[@]}"; do
     compose exec -T apache cat \
         "/home/boincadm/project/config.xml" > "$RUN_DIR/config/config.xml"
 
-    for service in mysql makeproject apache client-cluster client-desktop client-low-power client-phone; do
+    for service in mysql makeproject apache client-cluster client-cluster-2 client-desktop client-low-power client-phone; do
         container_id=$(compose --profile experiment ps -aq "$service" | tr -d '\r')
         if [[ -n "$container_id" ]]; then
             docker inspect "$container_id" > "$RUN_DIR/raw/${service}-inspect.json"
@@ -533,6 +533,7 @@ manifest = {
     "host_platform": platform.platform(),
     "node_profiles": {
         "cluster-01": {"cpu_quota": 4.0, "ncpus": 4, "memory": "4g"},
+        "cluster-02": {"cpu_quota": 4.0, "ncpus": 4, "memory": "4g"},
         "desktop-01": {"cpu_quota": 2.0, "ncpus": 2, "memory": "2g"},
         "low-power-01": {"cpu_quota": 1.0, "ncpus": 1, "memory": "1g"},
         "phone-01": {"cpu_quota": 0.5, "ncpus": 1, "memory": "512m"},

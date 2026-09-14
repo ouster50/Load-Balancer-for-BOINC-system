@@ -24,6 +24,7 @@
 - `makeproject`: сборка текущего корневого `boinc/` и создание проекта;
 - `apache`: scheduler CGI и backend daemons;
 - `client-cluster`: 4 CPU, 4 GiB;
+- `client-cluster-2`: 4 CPU, 4 GiB (идентичный peer для fairness among equals);
 - `client-desktop`: 2 CPU, 2 GiB;
 - `client-low-power`: 1 CPU, 1 GiB;
 - `client-phone`: 0.5 CPU, 512 MiB.
