@@ -86,10 +86,10 @@ values = {
     "max_wus_in_progress": max_wus_in_progress,
     "custom_load_balancer": "0",
     "custom_lb_policy": "hybrid",
-    "custom_lb_target_runtime": "30",
-    "custom_lb_size_weight": "2",
-    "custom_lb_deadline_weight": "4",
-    "custom_lb_runtime_weight": "0.25",
+    "custom_lb_target_runtime": "35",
+    "custom_lb_size_weight": "4",
+    "custom_lb_deadline_weight": "3",
+    "custom_lb_runtime_weight": "0.2",
     "debug_custom_load_balancer": "1",
 }
 for name, value in values.items():
