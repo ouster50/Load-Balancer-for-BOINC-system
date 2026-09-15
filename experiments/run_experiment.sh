@@ -302,11 +302,33 @@ sample_container_stats() {
     while [[ -f "$RUN_DIR/.sampling" ]]; do
         printf '{"sample_time":%s,"containers":[' "$(epoch_now)" \
             >> "$RUN_DIR/raw/container_stats.jsonl"
-        docker stats --no-stream --format '{{json .}}' 2>/dev/null \
-            | paste -sd, - >> "$RUN_DIR/raw/container_stats.jsonl" || true
+        local stats_pid waited=0
+        (
+            docker stats --no-stream --format '{{json .}}' 2>/dev/null \
+                | paste -sd, -
+        ) >> "$RUN_DIR/raw/container_stats.jsonl" &
+        stats_pid=$!
+        while kill -0 "$stats_pid" 2>/dev/null && (( waited < 15 )); do
+            sleep 1
+            waited=$((waited + 1))
+        done
+        kill "$stats_pid" 2>/dev/null || true
+        wait "$stats_pid" 2>/dev/null || true
         printf ']}\n' >> "$RUN_DIR/raw/container_stats.jsonl"
         sleep 5
     done
+}
+
+stop_sampler() {
+    rm -f "$RUN_DIR/.sampling"
+    [[ -n "${SAMPLER_PID:-}" ]] || return 0
+    local waited=0
+    while kill -0 "$SAMPLER_PID" 2>/dev/null && (( waited < 15 )); do
+        sleep 1
+        waited=$((waited + 1))
+    done
+    kill "$SAMPLER_PID" 2>/dev/null || true
+    wait "$SAMPLER_PID" 2>/dev/null || true
 }
 
 CHURN_CLIENT_SERVICES=(
@@ -458,9 +480,12 @@ for POLICY in "${POLICIES[@]}"; do
     mkdir -p "$RUN_DIR"/{raw,config,analysis,clients}
     printf 'timestamp,node,action\n' > "$EVENTS_FILE"
 
+    echo "=== [$PAIR_ID] policy=$POLICY ===" >&2
+    stop_churn
     compose --profile experiment down -v --remove-orphans >/dev/null 2>&1 || true
     STARTED_AT=$(epoch_now)
 
+    echo "[$POLICY] starting mysql/apache..." >&2
     compose up -d mysql makeproject apache
     wait_for_project
     if ! mysql_query "SELECT 1;" >/dev/null; then
@@ -469,6 +494,7 @@ for POLICY in "${POLICIES[@]}"; do
         exit 5
     fi
 
+    echo "[$POLICY] setup_project (may take 1-3 min)..." >&2
     ship_experiment | compose run --rm -T --no-deps \
         -e MAX_WUS_TO_SEND="$MAX_WUS_TO_SEND" \
         -e MAX_WUS_IN_PROGRESS="$MAX_WUS_IN_PROGRESS" \
@@ -476,6 +502,7 @@ for POLICY in "${POLICIES[@]}"; do
         bash -c "$UNPACK_EXPERIMENT && bash /tmp/experiment/server/setup_project.sh"
     wait_for_project
     ensure_app_downloadable
+    echo "[$POLICY] applying scheduler policy..." >&2
     ship_experiment | compose exec -T apache \
         bash -c "$UNPACK_EXPERIMENT && bash /tmp/experiment/server/set_policy.sh $POLICY"
     restart_boinc_daemons
@@ -498,6 +525,9 @@ for POLICY in "${POLICIES[@]}"; do
         bash -c "$UNPACK_EXPERIMENT && bash /tmp/experiment/server/create_workload.sh"
     boinc_exec 'touch reread_db' >/dev/null 2>&1 || true
 
+    rm -rf "$RUN_DIR/clients"
+    mkdir -p "$RUN_DIR/clients"
+    echo "[$POLICY] starting clients..." >&2
     compose --profile experiment up -d --force-recreate \
         client-cluster client-cluster-2 client-desktop client-low-power \
         client-phone client-phone-2
@@ -534,9 +564,9 @@ for POLICY in "${POLICIES[@]}"; do
 
     stop_churn
     FINISHED_AT=$(epoch_now)
-    rm -f "$RUN_DIR/.sampling"
-    wait "$SAMPLER_PID" || true
+    stop_sampler
 
+    echo "[$POLICY] exporting results..." >&2
     mysql_query_batch "
             SELECT
                 r.id AS result_id,
@@ -582,7 +612,7 @@ for POLICY in "${POLICIES[@]}"; do
     compose exec -T apache sh -c \
         'cat "$PROJECT_ROOT"/log_* 2>/dev/null || true' \
         > "$RUN_DIR/raw/scheduler.log"
-    compose --profile experiment logs --no-color \
+    compose --profile experiment logs --no-color --tail=2000 \
         > "$RUN_DIR/raw/compose.log" 2>&1
     compose logs --no-color apache 2>&1 \
         >> "$RUN_DIR/raw/scheduler.log"
