@@ -116,28 +116,36 @@ reliability, CPU/GPU plan classes и file locality. Его основные ог
 `send_work_custom()` повторяет locking, quota и feasibility contract
 `send_work_score()`. Изменяется только порядок допустимых кандидатов.
 
-Для job `i` и host `j`:
+Для job `i` и host `j` (hybrid v3, churn-aware):
 
 ```text
-effective_flops_j = projected_flops_j * available_fraction_j
-predicted_time_ij = BOINC estimate_duration(i, j)
-runtime_ratio_ij = clamp(predicted_time_ij / target_runtime, 0.01, 100)
-size_affinity_ij = -abs(log(runtime_ratio_ij))
+availability_j = clamp(cpu_available_frac_j, 0.15, 1.0)
+effective_time_ij = predicted_time_ij / availability_j
+runtime_ratio_ij = clamp(effective_time_ij / target_runtime, 0.01, 100)
+size_affinity_ij = -abs(log(runtime_ratio_ij)) * availability_j
+host_fit_ij = (log(1 + host_speed_j) - log(1 + effective_time_ij)) * availability_j^2
+slow_host_long_penalty_ij = 0
+  if predicted_time_ij > 0.5 * target_runtime and host_speed_j < 2:
+    1.5 * (predicted_time_ij / target_runtime) * (2 - host_speed_j) / availability_j
+  elif predicted_time_ij > target_runtime and host_speed_j < 4:
+    0.5 * (predicted_time_ij / target_runtime - 1) * (4 - host_speed_j) / availability_j
 
 score_ij =
-    100 * boinc_score_ij
+    (25 + 55 * availability_j) * boinc_score_ij
   + w_size * size_affinity_ij
   + w_deadline * target_runtime / delay_bound_i
-  - w_runtime * log(1 + predicted_time_ij / 60)
+  - w_runtime * log(1 + effective_time_ij / target_runtime)
+  + 0.05 * w_size * host_fit_ij
+  - w_runtime * slow_host_long_penalty_ij
 ```
 
 Следствия:
 
 - быстрые hosts предпочитают крупные задачи;
 - медленные hosts предпочитают короткие задачи;
-- runtime penalty уменьшает задержку коротких задач;
-- deadline pressure предотвращает голодание срочной работы;
-- штатный BOINC score сохраняет приоритет reliability/locality/beta/jobs.
+- при низкой `availability` custom-члены ослабляются, baseline score доминирует;
+- long/medium jobs штрафуются на phone/low-power и на flaky hosts;
+- deadline pressure предотвращает голодание срочной работы.
 
 Это проверяемая гипотеза, а не гарантированное улучшение. Ошибка
 `rsc_fpops_est` или неверные веса могут ухудшить результат. Feature flag
@@ -162,8 +170,8 @@ score_ij =
 <custom_lb_policy>hybrid</custom_lb_policy>
 <custom_lb_target_runtime>30</custom_lb_target_runtime>
 <custom_lb_size_weight>2</custom_lb_size_weight>
-<custom_lb_deadline_weight>4</custom_lb_deadline_weight>
-<custom_lb_runtime_weight>0.25</custom_lb_runtime_weight>
+<custom_lb_deadline_weight>5</custom_lb_deadline_weight>
+<custom_lb_runtime_weight>0.55</custom_lb_runtime_weight>
 <debug_custom_load_balancer>1</debug_custom_load_balancer>
 ```
 
