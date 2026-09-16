@@ -1,11 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
-POLICY=${1:?usage: set_policy.sh baseline|random|lpt|sjf|hybrid}
+POLICY=${1:?usage: set_policy.sh baseline|random|lpt|sjf|hybrid|round_robin|weighted_least_loaded}
 case "$POLICY" in
     baseline) ENABLED=0; CUSTOM_POLICY=hybrid ;;
     custom|hybrid) ENABLED=1; CUSTOM_POLICY=hybrid ;;
-    random|lpt|sjf) ENABLED=1; CUSTOM_POLICY=$POLICY ;;
+    random|lpt|sjf|round_robin|weighted_least_loaded) ENABLED=1; CUSTOM_POLICY=$POLICY ;;
     *) echo "Unknown policy: $POLICY" >&2; exit 2 ;;
 esac
 

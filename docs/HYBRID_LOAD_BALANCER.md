@@ -144,6 +144,8 @@ score_ij =
 | `random` | детерминированный hash `(result_id, host_id)` | слабый контроль P0 |
 | `lpt` | максимальный predicted runtime первым | контроль P2 для makespan |
 | `sjf` | минимальный predicted runtime первым | контроль P3 для response time |
+| `round_robin` | циклический: `result_id mod 6 -> host_id mod 6` | классический round robin для сравнения |
+| `weighted_least_loaded` | `log(1 + speed * availability / (in_progress + 1))` | capacity-aware метод |
 | `hybrid` | size affinity + deadline + runtime penalty | предлагаемая P4 |
 
 Дефолтный `send_work_score()` остаётся baseline для контроля, что метрики не стали хуже, чем у балансировщика по умолчанию

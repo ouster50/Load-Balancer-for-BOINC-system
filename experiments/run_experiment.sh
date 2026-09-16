@@ -21,11 +21,18 @@ PAIR_ID=${PAIR_ID:-$(date -u +%Y%m%dT%H%M%SZ)}
 KEEP_STACK=${KEEP_STACK:-0}
 
 case "$REQUESTED_POLICY" in
-    baseline|random|lpt|sjf|hybrid|custom) POLICIES=("$REQUESTED_POLICY") ;;
+    baseline|random|lpt|sjf|hybrid|round_robin|weighted_least_loaded|custom)
+        POLICIES=("$REQUESTED_POLICY")
+        ;;
     both) POLICIES=(baseline hybrid) ;;
     all) POLICIES=(baseline random lpt sjf hybrid) ;;
-    *) echo "Usage: $0 [baseline|random|lpt|sjf|hybrid|custom|both|all]" >&2; exit 2 ;;
+    full) POLICIES=(baseline random lpt sjf hybrid round_robin weighted_least_loaded) ;;
+    *)
+        echo "Usage: $0 [baseline|random|lpt|sjf|hybrid|round_robin|weighted_least_loaded|custom|both|all|full]" >&2
+        exit 2
+        ;;
 esac
+export POLICIES_LIST="${POLICIES[*]}"
 case "$CHURN_PROFILE" in
     stable|moderate|heavy) ;;
     *) echo "CHURN_PROFILE must be stable, moderate or heavy" >&2; exit 2 ;;
@@ -759,8 +766,8 @@ print("A/B comparison:", output_path)
 PY
 fi
 
-if [[ "$REQUESTED_POLICY" == all ]]; then
-    PAIR_ID="$PAIR_ID" ROOT_DIR="$ROOT_DIR" python3 - <<'PY'
+if [[ "$REQUESTED_POLICY" == all || "$REQUESTED_POLICY" == full ]]; then
+    PAIR_ID="$PAIR_ID" ROOT_DIR="$ROOT_DIR" POLICIES_LIST="$POLICIES_LIST" python3 - <<'PY'
 import csv
 import json
 import os
@@ -769,7 +776,7 @@ from pathlib import Path
 root = Path(os.environ["ROOT_DIR"]) / "results"
 pair_id = os.environ["PAIR_ID"]
 rows = []
-for policy in ("baseline", "random", "lpt", "sjf", "hybrid"):
+for policy in os.environ["POLICIES_LIST"].split():
     with (root / f"{pair_id}_{policy}" / "analysis" / "metrics.json").open() as source:
         metrics = json.load(source)
     rows.append({
