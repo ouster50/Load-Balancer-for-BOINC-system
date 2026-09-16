@@ -1,5 +1,3 @@
-version: "3.4"
-
 volumes:
   mysql:
   project:
@@ -18,7 +16,8 @@ services:
   makeproject:
     image: boinc/server_makeproject:$VERSION$TAG$DEFAULTARGS
     build: 
-      context: images/makeproject
+      context: .
+      dockerfile: images/makeproject/Dockerfile
       target: makeproject$DEFAULTARGS
       args:
         - TAG
@@ -27,6 +26,7 @@ services:
     volumes:
       - "project:$PROJECT_ROOT.dst"
       - "secrets:/run/secrets"
+      - "./experiments:/experiment:ro"
     hostname: makeproject
     environment:
       - URL_BASE
@@ -44,15 +44,136 @@ services:
     hostname: $PROJECT
     depends_on:
       - mysql
+    networks:
+      default:
+        aliases:
+          - boincserver.local
     volumes: 
       - "project:$PROJECT_ROOT"
       - "results:/results"
       - "secrets:/run/secrets"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "./boinc:/usr/local/src/boinc_source"
+      - "./experiments:/experiment:ro"
     ports: 
       - "80:80"
     tty: true
     environment:
       - URL_BASE
       - PROJECT
+
+  client-cluster:
+    profiles: ["experiment"]
+    image: boinc/hybrid-client:latest
+    build:
+      context: experiments/client
+    hostname: cluster-01
+    depends_on:
+      - apache
+    environment:
+      PROJECT_URL: ${PROJECT_URL:-http://boincserver.local/boincserver/}
+      AUTHENTICATOR: ${EXPERIMENT_AUTHENTICATOR:-}
+      PROFILE_NAME: cluster
+      NCPUS: "4"
+      MAX_NCPUS_PCT: "100"
+      WORK_BUF_MIN_DAYS: "0.0007"
+      WORK_BUF_ADDITIONAL_DAYS: "0.0007"
+    cpus: 4.0
+    mem_limit: 4g
+    volumes:
+      - "${RESULT_DIR:-./results/current}/clients/cluster:/var/lib/boinc-client"
+
+  client-cluster-2:
+    profiles: ["experiment"]
+    image: boinc/hybrid-client:latest
+    hostname: cluster-02
+    depends_on:
+      - apache
+    environment:
+      PROJECT_URL: ${PROJECT_URL:-http://boincserver.local/boincserver/}
+      AUTHENTICATOR: ${EXPERIMENT_AUTHENTICATOR:-}
+      PROFILE_NAME: cluster
+      NCPUS: "4"
+      MAX_NCPUS_PCT: "100"
+      WORK_BUF_MIN_DAYS: "0.0007"
+      WORK_BUF_ADDITIONAL_DAYS: "0.0007"
+    cpus: 4.0
+    mem_limit: 4g
+    volumes:
+      - "${RESULT_DIR:-./results/current}/clients/cluster-2:/var/lib/boinc-client"
+
+  client-desktop:
+    profiles: ["experiment"]
+    image: boinc/hybrid-client:latest
+    hostname: desktop-01
+    depends_on:
+      - apache
+    environment:
+      PROJECT_URL: ${PROJECT_URL:-http://boincserver.local/boincserver/}
+      AUTHENTICATOR: ${EXPERIMENT_AUTHENTICATOR:-}
+      PROFILE_NAME: desktop
+      NCPUS: "2"
+      MAX_NCPUS_PCT: "100"
+      WORK_BUF_MIN_DAYS: "0.0007"
+      WORK_BUF_ADDITIONAL_DAYS: "0.0007"
+    cpus: 2.0
+    mem_limit: 2g
+    volumes:
+      - "${RESULT_DIR:-./results/current}/clients/desktop:/var/lib/boinc-client"
+
+  client-low-power:
+    profiles: ["experiment"]
+    image: boinc/hybrid-client:latest
+    hostname: low-power-01
+    depends_on:
+      - apache
+    environment:
+      PROJECT_URL: ${PROJECT_URL:-http://boincserver.local/boincserver/}
+      AUTHENTICATOR: ${EXPERIMENT_AUTHENTICATOR:-}
+      PROFILE_NAME: low-power
+      NCPUS: "1"
+      MAX_NCPUS_PCT: "100"
+      WORK_BUF_MIN_DAYS: "0.00035"
+      WORK_BUF_ADDITIONAL_DAYS: "0.00035"
+    cpus: 1.0
+    mem_limit: 1g
+    volumes:
+      - "${RESULT_DIR:-./results/current}/clients/low-power:/var/lib/boinc-client"
+
+  client-phone:
+    profiles: ["experiment"]
+    image: boinc/hybrid-client:latest
+    hostname: phone-01
+    depends_on:
+      - apache
+    environment:
+      PROJECT_URL: ${PROJECT_URL:-http://boincserver.local/boincserver/}
+      AUTHENTICATOR: ${EXPERIMENT_AUTHENTICATOR:-}
+      PROFILE_NAME: phone
+      NCPUS: "1"
+      MAX_NCPUS_PCT: "100"
+      WORK_BUF_MIN_DAYS: "0.0002"
+      WORK_BUF_ADDITIONAL_DAYS: "0.0002"
+    cpus: 0.5
+    mem_limit: 512m
+    volumes:
+      - "${RESULT_DIR:-./results/current}/clients/phone:/var/lib/boinc-client"
+
+  client-phone-2:
+    profiles: ["experiment"]
+    image: boinc/hybrid-client:latest
+    hostname: phone-02
+    depends_on:
+      - apache
+    environment:
+      PROJECT_URL: ${PROJECT_URL:-http://boincserver.local/boincserver/}
+      AUTHENTICATOR: ${EXPERIMENT_AUTHENTICATOR:-}
+      PROFILE_NAME: phone
+      NCPUS: "1"
+      MAX_NCPUS_PCT: "100"
+      WORK_BUF_MIN_DAYS: "0.0002"
+      WORK_BUF_ADDITIONAL_DAYS: "0.0002"
+    cpus: 0.5
+    mem_limit: 512m
+    volumes:
+      - "${RESULT_DIR:-./results/current}/clients/phone-2:/var/lib/boinc-client"
