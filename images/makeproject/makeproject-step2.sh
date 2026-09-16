@@ -2,7 +2,14 @@
 
 set -e
 
-source /run/secrets/secrets.env
+# extracting secrets from BOINC environment
+SECRETS=/run/secrets
+mkdir -p "$SECRETS"
+if [[ ! -f $SECRETS/secrets.env ]]; then
+    cp /usr/local/share/boinc-secrets.env "$SECRETS/secrets.env"
+fi
+
+source "$SECRETS/secrets.env"
 
 PROJECT_ROOT_DEST=$PROJECT_ROOT.dst
 cd $PROJECT_ROOT
@@ -16,6 +23,7 @@ for file in config.xml html/user/schedulers.txt *.httpd.conf html/ops/.htaccess 
            -e "s|\${PROJECT_ROOT}|$PROJECT_ROOT|gI" \
            -e "s|\${URL_BASE}|$URL_BASE|gI" \
            -e "s|\${DB_PASSWD}|$DB_PASSWD|gI" \
+           -e "s|\${db_passwd}|$DB_PASSWD|gI" \
            -e "s|\${MAILPASS}|$MAILPASS|gI" \
            -e "s|\${RECAPTCHA_PUBLIC_KEY}|$RECAPTCHA_PUBLIC_KEY|gI" \
            -e "s|\${RECAPTCHA_PRIVATE_KEY}|$RECAPTCHA_PRIVATE_KEY|gI" \
