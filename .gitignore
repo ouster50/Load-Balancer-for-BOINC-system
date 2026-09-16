@@ -1,2 +1,12 @@
 .tags
 .vscode
+results/
+
+report/main.aux
+report/main.bbl
+report/main.bcf
+report/main.blg
+report/main.log
+report/main.run.xml
+report/main.toc
+report/texput.log
