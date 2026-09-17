@@ -121,7 +121,7 @@ slow_host_long_penalty_ij = 0
     0.5 * (predicted_time_ij / target_runtime - 1) * (4 - host_speed_j) / availability_j
 
 score_ij =
-    (25 + 55 * availability_j) * boinc_score_ij
+    (10 + 10 * availability_j) * boinc_score_ij
   + w_size * size_affinity_ij
   + w_deadline * target_runtime / delay_bound_i
   - w_runtime * log(1 + effective_time_ij / target_runtime)
