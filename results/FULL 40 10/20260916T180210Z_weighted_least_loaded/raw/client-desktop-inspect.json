@@ -1,0 +1,228 @@
+[
+    {
+        "Id": "31515731ccf5f2ad5cdb91bb7c90b244e32a1b7ec7a73589ea6b3c4dc32df1c7",
+        "Created": "2026-09-16T18:40:27.995664121Z",
+        "Path": "/usr/local/bin/boinc-experiment-client",
+        "Args": [],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 194175,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-09-16T18:40:28.140945598Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:582dbc9b372f11f7a227d5e39535f2c78b6369c5436d46614b3a82878d5c5332",
+        "ResolvConfPath": "/var/lib/docker/containers/31515731ccf5f2ad5cdb91bb7c90b244e32a1b7ec7a73589ea6b3c4dc32df1c7/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/31515731ccf5f2ad5cdb91bb7c90b244e32a1b7ec7a73589ea6b3c4dc32df1c7/hostname",
+        "HostsPath": "/var/lib/docker/containers/31515731ccf5f2ad5cdb91bb7c90b244e32a1b7ec7a73589ea6b3c4dc32df1c7/hosts",
+        "LogPath": "/var/lib/docker/containers/31515731ccf5f2ad5cdb91bb7c90b244e32a1b7ec7a73589ea6b3c4dc32df1c7/31515731ccf5f2ad5cdb91bb7c90b244e32a1b7ec7a73589ea6b3c4dc32df1c7-json.log",
+        "Name": "/load-balancer-for-boinc-system-client-desktop-1",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system/results/20260916T180210Z_weighted_least_loaded/clients/desktop:/var/lib/boinc-client:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "load-balancer-for-boinc-system_default",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 2147483648,
+            "NanoCpus": 2000000000,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 4294967296,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "bind",
+                "Source": "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system/results/20260916T180210Z_weighted_least_loaded/clients/desktop",
+                "Destination": "/var/lib/boinc-client",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "desktop-01",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "WORK_BUF_MIN_DAYS=0.0007",
+                "WORK_BUF_ADDITIONAL_DAYS=0.0007",
+                "PROJECT_URL=http://boincserver.local/boincserver/",
+                "AUTHENTICATOR=522d61330c88d02bd98251ce82fa96be",
+                "PROFILE_NAME=desktop",
+                "NCPUS=2",
+                "MAX_NCPUS_PCT=100",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+            ],
+            "Cmd": null,
+            "Image": "boinc/hybrid-client:latest",
+            "Volumes": null,
+            "WorkingDir": "",
+            "Entrypoint": [
+                "/usr/local/bin/boinc-experiment-client"
+            ],
+            "Labels": {
+                "com.docker.compose.config-hash": "0c5f7ab10bdb9a43dc4a4ab906756b83132695cf66a6ca15293d52c948ca80a3",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "apache:service_started:false",
+                "com.docker.compose.image": "sha256:582dbc9b372f11f7a227d5e39535f2c78b6369c5436d46614b3a82878d5c5332",
+                "com.docker.compose.image.builder": "classic",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "load-balancer-for-boinc-system",
+                "com.docker.compose.project.config_files": "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system",
+                "com.docker.compose.service": "client-desktop",
+                "com.docker.compose.version": "5.1.0"
+            }
+        },
+        "NetworkSettings": {
+            "SandboxID": "1bf5478b876ae947347e73f399c74c443dd1b870d5b59342e416a031077b27a5",
+            "SandboxKey": "/var/run/docker/netns/1bf5478b876a",
+            "Ports": {},
+            "Networks": {
+                "load-balancer-for-boinc-system_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "load-balancer-for-boinc-system-client-desktop-1",
+                        "client-desktop"
+                    ],
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "db1918edc7df1c37ee544dc40fa637e72a22431e471da84ce16b1e1617ddacc4",
+                    "EndpointID": "6c32cc167421fcf761e7538a9ad63148896d94f4dddbd5f0cd8bbcdb11fd9d87",
+                    "Gateway": "172.21.0.1",
+                    "IPAddress": "172.21.0.8",
+                    "MacAddress": "0e:85:0e:06:9e:23",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "load-balancer-for-boinc-system-client-desktop-1",
+                        "client-desktop",
+                        "31515731ccf5",
+                        "desktop-01"
+                    ]
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:582dbc9b372f11f7a227d5e39535f2c78b6369c5436d46614b3a82878d5c5332",
+            "size": 1187,
+            "platform": {
+                "architecture": "arm64",
+                "os": "linux"
+            }
+        }
+    }
+]

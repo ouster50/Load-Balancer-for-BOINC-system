@@ -1,0 +1,320 @@
+[
+    {
+        "Id": "0929939b793bb8cbece43f214693423a109cd281b6f96cbf3fe11847339e62dd",
+        "Created": "2026-09-17T09:06:08.396292832Z",
+        "Path": "docker-php-entrypoint",
+        "Args": [
+            "/usr/bin/supervisord"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 309134,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-09-17T09:06:08.533391435Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:0e2080d73a4b65f80c7e1814b8c5b67e94044e501a99e611e8ecdb24f84ec9f1",
+        "ResolvConfPath": "/var/lib/docker/containers/0929939b793bb8cbece43f214693423a109cd281b6f96cbf3fe11847339e62dd/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/0929939b793bb8cbece43f214693423a109cd281b6f96cbf3fe11847339e62dd/hostname",
+        "HostsPath": "/var/lib/docker/containers/0929939b793bb8cbece43f214693423a109cd281b6f96cbf3fe11847339e62dd/hosts",
+        "LogPath": "/var/lib/docker/containers/0929939b793bb8cbece43f214693423a109cd281b6f96cbf3fe11847339e62dd/0929939b793bb8cbece43f214693423a109cd281b6f96cbf3fe11847339e62dd-json.log",
+        "Name": "/load-balancer-for-boinc-system-apache-1",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system/boinc:/usr/local/src/boinc_source:rw",
+                "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system/experiments:/experiment:ro",
+                "load-balancer-for-boinc-system_project:/home/boincadm/project:rw",
+                "load-balancer-for-boinc-system_results:/results:rw",
+                "load-balancer-for-boinc-system_secrets:/run/secrets:rw",
+                "/var/run/docker.sock:/var/run/docker.sock:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "load-balancer-for-boinc-system_default",
+            "PortBindings": {
+                "80/tcp": [
+                    {
+                        "HostIp": "",
+                        "HostPort": "80"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "load-balancer-for-boinc-system_secrets",
+                "Source": "/var/lib/docker/volumes/load-balancer-for-boinc-system_secrets/_data",
+                "Destination": "/run/secrets",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            },
+            {
+                "Type": "bind",
+                "Source": "/var/run/docker.sock",
+                "Destination": "/var/run/docker.sock",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system/boinc",
+                "Destination": "/usr/local/src/boinc_source",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "bind",
+                "Source": "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system/experiments",
+                "Destination": "/experiment",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            },
+            {
+                "Type": "volume",
+                "Name": "load-balancer-for-boinc-system_project",
+                "Source": "/var/lib/docker/volumes/load-balancer-for-boinc-system_project/_data",
+                "Destination": "/home/boincadm/project",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            },
+            {
+                "Type": "volume",
+                "Name": "load-balancer-for-boinc-system_results",
+                "Source": "/var/lib/docker/volumes/load-balancer-for-boinc-system_results/_data",
+                "Destination": "/results",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "boincserver",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "80/tcp": {}
+            },
+            "Tty": true,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PROJECT=boincserver",
+                "URL_BASE=http://boincserver.local",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "PHPIZE_DEPS=autoconf \t\tdpkg-dev \t\tfile \t\tg++ \t\tgcc \t\tlibc-dev \t\tmake \t\tpkg-config \t\tre2c",
+                "PHP_INI_DIR=/usr/local/etc/php",
+                "APACHE_CONFDIR=/etc/apache2",
+                "APACHE_ENVVARS=/etc/apache2/envvars",
+                "PHP_CFLAGS=-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64",
+                "PHP_CPPFLAGS=-fstack-protector-strong -fpic -fpie -O2 -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64",
+                "PHP_LDFLAGS=-Wl,-O1 -pie",
+                "GPG_KEYS=CBAF69F173A0FEA4B537F470D66C9593118BCCB6 F38252826ACD957EF380D39F2F7956BC5DA04B5D",
+                "PHP_VERSION=7.3.33",
+                "PHP_URL=https://www.php.net/distributions/php-7.3.33.tar.xz",
+                "PHP_ASC_URL=https://www.php.net/distributions/php-7.3.33.tar.xz.asc",
+                "PHP_SHA256=166eaccde933381da9516a2b70ad0f447d7cec4b603d07b9a916032b215b90cc",
+                "BOINC_USER=boincadm",
+                "PROJECT_ROOT=/home/boincadm/project",
+                "USER=boincadm",
+                "HOME=/home/boincadm",
+                "MYSQL_HOST=mysql"
+            ],
+            "Cmd": [
+                "/usr/bin/supervisord"
+            ],
+            "Image": "boinc/server_apache:latest-defaultargs",
+            "Volumes": null,
+            "WorkingDir": "/home/boincadm/project",
+            "Entrypoint": [
+                "docker-php-entrypoint"
+            ],
+            "Labels": {
+                "com.docker.compose.config-hash": "20124ce5e306619314204b83c90651b2aaf37a7aab9b5f437a857f0c1e5da4b9",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "mysql:service_started:false",
+                "com.docker.compose.image": "sha256:0e2080d73a4b65f80c7e1814b8c5b67e94044e501a99e611e8ecdb24f84ec9f1",
+                "com.docker.compose.image.builder": "classic",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "load-balancer-for-boinc-system",
+                "com.docker.compose.project.config_files": "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system",
+                "com.docker.compose.service": "apache",
+                "com.docker.compose.version": "5.1.0",
+                "maintainer": "Marius Millea <mariusmillea@gmail.com>"
+            },
+            "StopSignal": "SIGWINCH"
+        },
+        "NetworkSettings": {
+            "SandboxID": "a81df6233ba9d5eab0231c87d23d394e5e5a04bbb1d6b65c2c63e9f32f713e5d",
+            "SandboxKey": "/var/run/docker/netns/a81df6233ba9",
+            "Ports": {
+                "80/tcp": [
+                    {
+                        "HostIp": "0.0.0.0",
+                        "HostPort": "80"
+                    },
+                    {
+                        "HostIp": "::",
+                        "HostPort": "80"
+                    }
+                ]
+            },
+            "Networks": {
+                "load-balancer-for-boinc-system_default": {
+                    "IPAMConfig": {},
+                    "Links": null,
+                    "Aliases": [
+                        "load-balancer-for-boinc-system-apache-1",
+                        "apache",
+                        "boincserver.local"
+                    ],
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "fbb4d1b6da294f4e548fabd49e5019e1ea817c65ca07a7ab260c356c520f07e2",
+                    "EndpointID": "8a48d845f90c6acda96615cdff4a86e70094b4c5be44a681273dc83b917061cf",
+                    "Gateway": "172.21.0.1",
+                    "IPAddress": "172.21.0.4",
+                    "MacAddress": "5e:d6:2b:6e:d9:34",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "load-balancer-for-boinc-system-apache-1",
+                        "apache",
+                        "boincserver.local",
+                        "0929939b793b",
+                        "boincserver"
+                    ]
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:0e2080d73a4b65f80c7e1814b8c5b67e94044e501a99e611e8ecdb24f84ec9f1",
+            "size": 5372,
+            "platform": {
+                "architecture": "arm64",
+                "os": "linux"
+            }
+        }
+    }
+]

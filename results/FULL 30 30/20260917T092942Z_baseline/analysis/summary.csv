@@ -1,0 +1,14 @@
+metric,value
+policy,baseline
+observation_seconds,346.9985830783844
+tasks_total,36
+tasks_completed,36
+tasks_failed_or_incomplete,0
+throughput_tasks_per_second,0.1037468213288579
+makespan_seconds,287.0
+deadline_misses,0
+deadline_miss_rate,0.0
+load_utilization_cv,0.49429867051950815
+jain_fairness_completed_tasks,0.8059701492537313
+cpu_efficiency,0.878212563213631
+scheduler_overhead_percent,0.0

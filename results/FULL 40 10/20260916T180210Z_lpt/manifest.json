@@ -1,0 +1,52 @@
+{
+  "churn_cycles": 15,
+  "churn_offline_seconds": 10,
+  "churn_online_seconds": 40,
+  "churn_profile": "heavy",
+  "churn_stagger_seconds": 10,
+  "docker_compose_version": null,
+  "docker_version": "29.2.1",
+  "estimate_profile": "accurate",
+  "finished_at_epoch": 1789582731.493144,
+  "git_commit": "76a6d1459f7752bc053b81ff216e115dc30695ef",
+  "git_dirty": true,
+  "host_platform": "macOS-26.3-arm64-arm-64bit",
+  "max_wus_in_progress": 2,
+  "max_wus_to_send": 1,
+  "node_profiles": {
+    "cluster-01": {
+      "cpu_quota": 4.0,
+      "memory": "4g",
+      "ncpus": 4
+    },
+    "cluster-02": {
+      "cpu_quota": 4.0,
+      "memory": "4g",
+      "ncpus": 4
+    },
+    "desktop-01": {
+      "cpu_quota": 2.0,
+      "memory": "2g",
+      "ncpus": 2
+    },
+    "low-power-01": {
+      "cpu_quota": 1.0,
+      "memory": "1g",
+      "ncpus": 1
+    },
+    "phone-01": {
+      "cpu_quota": 0.5,
+      "memory": "512m",
+      "ncpus": 1
+    },
+    "phone-02": {
+      "cpu_quota": 0.5,
+      "memory": "512m",
+      "ncpus": 1
+    }
+  },
+  "pair_id": "20260916T180210Z",
+  "policy": "lpt",
+  "started_at_epoch": 1789582413.552424,
+  "total_jobs": 36
+}

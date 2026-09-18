@@ -1,0 +1,45 @@
+apache-1  | /usr/lib/python2.7/dist-packages/supervisor/options.py:461: UserWarning: Supervisord is running as root and it is searching for its configuration file in default locations (including its current working directory); you probably want to specify a "-c" argument specifying an absolute path to a configuration file for improved security.
+apache-1  |   'Supervisord is running as root and it is searching '
+apache-1  | 2026-09-16 17:25:38,647 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+apache-1  | 2026-09-16 17:25:38,647 INFO Included extra file "/etc/supervisor/conf.d/supervisord.conf" during parsing
+apache-1  | 2026-09-16 17:25:38,651 INFO RPC interface 'supervisor' initialized
+apache-1  | 2026-09-16 17:25:38,651 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+apache-1  | 2026-09-16 17:25:38,652 INFO supervisord started with pid 1
+apache-1  | 2026-09-16 17:25:39,653 INFO spawned: 'cron' with pid 9
+apache-1  | 2026-09-16 17:25:39,653 INFO spawned: 'start' with pid 10
+apache-1  | 2026-09-16 17:25:39,654 INFO spawned: 'rsyslogd' with pid 11
+apache-1  | 2026-09-16 17:25:39,655 INFO spawned: 'apache2' with pid 12
+apache-1  | 2026-09-16 17:25:41,624 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+apache-1  | 2026-09-16 17:25:41,624 INFO success: start entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+apache-1  | 2026-09-16 17:25:41,624 INFO success: rsyslogd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+apache-1  | 2026-09-16 17:25:41,624 INFO success: apache2 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+apache-1  | 2026-09-16 17:25:55,112 INFO reaped unknown pid 64
+apache-1  | 2026-09-16 17:25:55,112 INFO reaped unknown pid 66
+apache-1  | 2026-09-16 17:25:55,112 INFO reaped unknown pid 68
+apache-1  | 2026-09-16 17:25:56,676 INFO reaped unknown pid 67
+apache-1  | 2026-09-16 17:25:56,676 INFO reaped unknown pid 69
+apache-1  | 2026-09-16 17:25:56,678 INFO reaped unknown pid 65
+apache-1  | 2026-09-16 17:26:04,918 INFO reaped unknown pid 152
+apache-1  | 2026-09-16 17:26:04,918 INFO reaped unknown pid 154
+apache-1  | 2026-09-16 17:26:04,918 INFO reaped unknown pid 156
+apache-1  | 2026-09-16 17:26:04,918 INFO reaped unknown pid 158
+apache-1  | 2026-09-16 17:26:04,919 INFO reaped unknown pid 160
+apache-1  | 2026-09-16 17:30:01,701 INFO reaped unknown pid 580
+apache-1  | 2026-09-16 17:30:01,802 INFO reaped unknown pid 582
+apache-1  | 2026-09-16 17:30:01,906 INFO reaped unknown pid 584
+apache-1  | 2026-09-16 17:30:02,011 INFO reaped unknown pid 586
+apache-1  | 2026-09-16 17:30:02,116 INFO reaped unknown pid 588
+apache-1  | 2026-09-16 17:30:03,150 INFO reaped unknown pid 579
+apache-1  | 2026-09-16 17:30:03,150 INFO reaped unknown pid 581
+apache-1  | 2026-09-16 17:30:03,150 INFO reaped unknown pid 583
+apache-1  | 2026-09-16 17:30:03,150 INFO reaped unknown pid 585
+apache-1  | 2026-09-16 17:30:03,150 INFO reaped unknown pid 587
+apache-1  | 2026-09-16 17:30:03,150 INFO reaped unknown pid 590
+apache-1  | 2026-09-16 17:30:03,150 INFO reaped unknown pid 599
+apache-1  | 2026-09-16 17:30:03,150 INFO reaped unknown pid 601
+apache-1  | 2026-09-16 17:30:03,150 INFO reaped unknown pid 603
+apache-1  | 2026-09-16 17:30:03,150 INFO reaped unknown pid 605
+apache-1  | 2026-09-16 17:30:07,229 INFO reaped unknown pid 589
+apache-1  | 2026-09-16 17:30:07,455 INFO reaped unknown pid 594
+apache-1  | 2026-09-16 17:30:07,542 INFO reaped unknown pid 596
+apache-1  | 2026-09-16 17:30:07,661 INFO reaped unknown pid 597

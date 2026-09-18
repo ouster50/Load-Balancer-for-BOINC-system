@@ -1,0 +1,256 @@
+[
+    {
+        "Id": "8bafb6d8a92f4129677305645532bc762872bdc7ca2441edfa69fe68b2acfe7d",
+        "Created": "2026-09-17T09:00:30.91542417Z",
+        "Path": "/bin/sh",
+        "Args": [
+            "-c",
+            "makeproject-step2.sh"
+        ],
+        "State": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-09-17T09:00:30.968316265Z",
+            "FinishedAt": "2026-09-17T09:00:41.920962426Z"
+        },
+        "Image": "sha256:dd86d1fcf3fd34dffc3ff97b0e95c25e4e6b75d44b9b6eaf86a2d30fb50475eb",
+        "ResolvConfPath": "/var/lib/docker/containers/8bafb6d8a92f4129677305645532bc762872bdc7ca2441edfa69fe68b2acfe7d/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/8bafb6d8a92f4129677305645532bc762872bdc7ca2441edfa69fe68b2acfe7d/hostname",
+        "HostsPath": "/var/lib/docker/containers/8bafb6d8a92f4129677305645532bc762872bdc7ca2441edfa69fe68b2acfe7d/hosts",
+        "LogPath": "/var/lib/docker/containers/8bafb6d8a92f4129677305645532bc762872bdc7ca2441edfa69fe68b2acfe7d/8bafb6d8a92f4129677305645532bc762872bdc7ca2441edfa69fe68b2acfe7d-json.log",
+        "Name": "/load-balancer-for-boinc-system-makeproject-1",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "load-balancer-for-boinc-system_project:/home/boincadm/project.dst:rw",
+                "load-balancer-for-boinc-system_secrets:/run/secrets:rw",
+                "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system/experiments:/experiment:ro"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "load-balancer-for-boinc-system_default",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "load-balancer-for-boinc-system_project",
+                "Source": "/var/lib/docker/volumes/load-balancer-for-boinc-system_project/_data",
+                "Destination": "/home/boincadm/project.dst",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            },
+            {
+                "Type": "volume",
+                "Name": "load-balancer-for-boinc-system_secrets",
+                "Source": "/var/lib/docker/volumes/load-balancer-for-boinc-system_secrets/_data",
+                "Destination": "/run/secrets",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            },
+            {
+                "Type": "bind",
+                "Source": "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system/experiments",
+                "Destination": "/experiment",
+                "Mode": "ro",
+                "RW": false,
+                "Propagation": "rprivate"
+            }
+        ],
+        "Config": {
+            "Hostname": "makeproject",
+            "Domainname": "",
+            "User": "boincadm",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PROJECT=boincserver",
+                "URL_BASE=http://boincserver.local",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "TAG=",
+                "BOINC_USER=boincadm",
+                "PROJECT_ROOT=/home/boincadm/project",
+                "USER=boincadm",
+                "HOME=/home/boincadm",
+                "MYSQL_HOST=mysql"
+            ],
+            "Cmd": [
+                "/bin/sh",
+                "-c",
+                "makeproject-step2.sh"
+            ],
+            "Image": "boinc/server_makeproject:latest-defaultargs",
+            "Volumes": null,
+            "WorkingDir": "/home/boincadm/project",
+            "Entrypoint": null,
+            "Labels": {
+                "com.docker.compose.config-hash": "24751dc4ae5c690582541d1e2973476a6b1e657cc7da5f1910c3f1900530e89a",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:dd86d1fcf3fd34dffc3ff97b0e95c25e4e6b75d44b9b6eaf86a2d30fb50475eb",
+                "com.docker.compose.image.builder": "classic",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "load-balancer-for-boinc-system",
+                "com.docker.compose.project.config_files": "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system/docker-compose.yml",
+                "com.docker.compose.project.working_dir": "/Users/razukhin/Desktop/coursework/Load-Balancer-for-BOINC-system",
+                "com.docker.compose.service": "makeproject",
+                "com.docker.compose.version": "5.1.0",
+                "maintainer": "Marius Millea <mariusmillea@gmail.com>"
+            }
+        },
+        "NetworkSettings": {
+            "SandboxID": "",
+            "SandboxKey": "",
+            "Ports": {},
+            "Networks": {
+                "load-balancer-for-boinc-system_default": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "load-balancer-for-boinc-system-makeproject-1",
+                        "makeproject"
+                    ],
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "89b04f1a2be3bdd848458f9f3ff5ac51ea693dc01e5c5c082be5967d4b1405fc",
+                    "EndpointID": "",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "MacAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "load-balancer-for-boinc-system-makeproject-1",
+                        "makeproject",
+                        "8bafb6d8a92f"
+                    ]
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:dd86d1fcf3fd34dffc3ff97b0e95c25e4e6b75d44b9b6eaf86a2d30fb50475eb",
+            "size": 3163,
+            "platform": {
+                "architecture": "arm64",
+                "os": "linux"
+            }
+        }
+    }
+]

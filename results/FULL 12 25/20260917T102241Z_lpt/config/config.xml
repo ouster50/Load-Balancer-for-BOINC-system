@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<boinc>
+    <config>
+        <upload_dir>/home/boincadm/project/upload</upload_dir>
+        <disable_account_creation_rpc>0</disable_account_creation_rpc>
+        <send_result_abort>1</send_result_abort>
+        <long_name>boincserver</long_name>
+        <sched_debug_level>3</sched_debug_level>
+        <cache_md5_info>1</cache_md5_info>
+        <upload_url>http://boincserver.local/boincserver_cgi/file_upload_handler</upload_url>
+        <disable_account_creation>0</disable_account_creation>
+        <uldl_dir_fanout>1024</uldl_dir_fanout>
+        <disable_web_account_creation>0</disable_web_account_creation>
+        <download_url>http://boincserver.local/boincserver/download</download_url>
+        <db_user>root</db_user>
+        <log_dir>/home/boincadm/project/log_boincserver</log_dir>
+        <account_creation_rpc_require_consent>0</account_creation_rpc_require_consent>
+        <enable_delete_account>0</enable_delete_account>
+        <app_dir>/home/boincadm/project/apps</app_dir>
+        <download_dir>/home/boincadm/project/download</download_dir>
+        <fuh_debug_level>3</fuh_debug_level>
+        <master_url>http://boincserver.local/boincserver/</master_url>
+        <host>boincserver</host>
+        <db_name>boincserver</db_name>
+        <shmem_key>0x11118f09</shmem_key>
+        <show_results>1</show_results>
+        <key_dir>/home/boincadm/project/keys/</key_dir>
+        <dont_generate_upload_certificates>1</dont_generate_upload_certificates>
+        <enable_privacy_by_default>0</enable_privacy_by_default>
+        <enable_login_mustagree_termsofuse>0</enable_login_mustagree_termsofuse>
+        <ignore_upload_certificates>1</ignore_upload_certificates>
+        <db_passwd>password</db_passwd>
+        <min_sendwork_interval>6</min_sendwork_interval>
+        <db_host>mysql</db_host>
+        <daily_result_quota>500</daily_result_quota>
+        <one_result_per_user_per_wu>0</one_result_per_user_per_wu>
+        <max_wus_to_send>1</max_wus_to_send>
+    <max_wus_in_progress>2</max_wus_in_progress><custom_load_balancer>1</custom_load_balancer><custom_lb_policy>lpt</custom_lb_policy><custom_lb_target_runtime>30</custom_lb_target_runtime><custom_lb_size_weight>2</custom_lb_size_weight><custom_lb_deadline_weight>5</custom_lb_deadline_weight><custom_lb_runtime_weight>0.55</custom_lb_runtime_weight><debug_custom_load_balancer>1</debug_custom_load_balancer></config>
+    <tasks>
+        <task>
+            <cmd>antique_file_deleter -d 2</cmd>
+            <period>24 hours</period>
+            <disabled>0</disabled>
+            <output>antique_file_deleter.out</output>
+        </task>
+        <task>
+            <cmd>db_dump -d 2 --dump_spec ../db_dump_spec.xml</cmd>
+            <period>24 hours</period>
+            <disabled>1</disabled>
+            <output>db_dump.out</output>
+        </task>
+        <task>
+            <cmd>run_in_ops ./update_uotd.php</cmd>
+            <period>1 days</period>
+            <disabled>0</disabled>
+            <output>update_uotd.out</output>
+        </task>
+        <task>
+            <cmd>run_in_ops ./update_forum_activities.php</cmd>
+            <period>1 hour</period>
+            <disabled>0</disabled>
+            <output>update_forum_activities.out</output>
+        </task>
+        <task>
+            <cmd>update_stats</cmd>
+            <period>1 days</period>
+            <disabled>0</disabled>
+            <output>update_stats.out</output>
+        </task>
+        <task>
+            <cmd>run_in_ops ./update_profile_pages.php</cmd>
+            <period>24 hours</period>
+            <disabled>0</disabled>
+            <output>update_profile_pages.out</output>
+        </task>
+        <task>
+            <cmd>run_in_ops ./team_import.php</cmd>
+            <period>24 hours</period>
+            <disabled>1</disabled>
+            <output>team_import.out</output>
+        </task>
+        <task>
+            <cmd>run_in_ops ./notify.php</cmd>
+            <period>24 hours</period>
+            <disabled>0</disabled>
+            <output>notify.out</output>
+        </task>
+        <task>
+            <cmd>run_in_ops ./badge_assign.php</cmd>
+            <period>24 hours</period>
+            <disabled>0</disabled>
+            <output>badge_assign.out</output>
+        </task>
+        <task>
+            <cmd>run_in_ops ./delete_expired_tokens.php</cmd>
+            <period>24 hours</period>
+            <disabled>0</disabled>
+            <output>delete_expired_tokens.out</output>
+        </task>
+        <task>
+            <cmd>run_in_ops ./delete_expired_users_and_hosts.php</cmd>
+            <period>24 hours</period>
+            <disabled>0</disabled>
+            <output>delete_expired_users_and_hosts.out</output>
+        </task>
+    </tasks>
+    <daemons>
+        <daemon>
+            <cmd>feeder -d 3 </cmd>
+        </daemon>
+        <daemon>
+            <cmd>transitioner -d 3 </cmd>
+        </daemon>
+        <daemon>
+            <cmd>file_deleter -d 3 </cmd>
+        </daemon>
+    <daemon><cmd>sample_trivial_validator -d 2 --app hybrid_synthetic</cmd></daemon><daemon><cmd>sample_dummy_assimilator -d 2 --app hybrid_synthetic</cmd></daemon></daemons>
+</boinc>

@@ -1,0 +1,14 @@
+metric,value
+policy,sjf
+observation_seconds,345.88090896606445
+tasks_total,36
+tasks_completed,36
+tasks_failed_or_incomplete,0
+throughput_tasks_per_second,0.1040820671705014
+makespan_seconds,302.0
+deadline_misses,0
+deadline_miss_rate,0.0
+load_utilization_cv,0.5169476980623009
+jain_fairness_completed_tasks,0.8925619834710744
+cpu_efficiency,0.8328214204323671
+scheduler_overhead_percent,0.0

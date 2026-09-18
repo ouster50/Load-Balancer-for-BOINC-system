@@ -1,0 +1,7 @@
+timestamp,node,action
+1789573942.811678,cluster-01,start
+1789573942.849355,cluster-02,start
+1789573942.883086,desktop-01,start
+1789573942.914316,low-power-01,start
+1789573942.950482,phone-01,start
+1789573942.981697,phone-02,start

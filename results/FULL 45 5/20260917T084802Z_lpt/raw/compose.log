@@ -1,0 +1,898 @@
+makeproject-1  | Updating project files in data volume...
+makeproject-1  | Waiting for MySQL server to start...
+makeproject-1  | Creating database...
+makeproject-1  | added platform: (create_time, name, user_friendly_name) values (1789635641, 'windows_intelx86', 'Microsoft Windows (98 or later) running on an Intel x86-compatible CPU')
+makeproject-1  | added platform: (create_time, name, user_friendly_name) values (1789635641, 'windows_x86_64', 'Microsoft Windows running on an AMD x86_64 or Intel EM64T CPU')
+makeproject-1  | added platform: (create_time, name, user_friendly_name) values (1789635641, 'windows_arm64', 'Microsoft Windows running on ARM 64-bit')
+makeproject-1  | added platform: (create_time, name, user_friendly_name) values (1789635641, 'i686-pc-linux-gnu', 'Linux running on an Intel x86-compatible CPU')
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] Starting BOINC client version 7.20.5 for aarch64-unknown-linux-gnu
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] This a development version of BOINC and may not function properly
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] log flags: file_xfer, sched_ops, task
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] Libraries: libcurl/7.88.1 OpenSSL/3.0.20 zlib/1.2.13 brotli/1.0.9 zstd/1.5.4 libidn2/2.3.3 libpsl/0.21.2 (+libidn2/2.3.3) libssh2/1.10.0 nghttp2/1.52.0 librtmp/2.3 OpenLDAP/2.5.13
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] Data directory: /var/lib/boinc-client
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] No usable GPUs found
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] Creating new client state file
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] libc:  version 2.36
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] Host name: phone-02
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] Processor: 1 ARM  [Impl 0x61 Arch 8 Variant 0x0 Part 0x000 Rev 0]
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] Processor features: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti afp
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] OS: Linux Debian GNU/Linux: Debian GNU/Linux 12 (bookworm) [6.8.0-100-generic|libc 2.36]
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] Memory: 9.69 GB physical, 0 bytes virtual
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] Disk: 18.33 GB total, 15.39 GB free
+makeproject-1     | added platform: (create_time, name, user_friendly_name) values (1789635641, 'x86_64-pc-linux-gnu', 'Linux running on an AMD x86_64 or Intel EM64T CPU')
+makeproject-1     | added platform: (create_time, name, user_friendly_name) values (1789635641, 'powerpc-apple-darwin', 'Mac OS X 10.3 or later running on Motorola PowerPC')
+makeproject-1     | added platform: (create_time, name, user_friendly_name) values (1789635641, 'i686-apple-darwin', 'Mac OS 10.4 or later running on Intel')
+makeproject-1     | added platform: (create_time, name, user_friendly_name) values (1789635641, 'x86_64-apple-darwin', 'Intel 64-bit Mac OS 10.5 or later')
+makeproject-1     | added platform: (create_time, name, user_friendly_name) values (1789635641, 'arm64-apple-darwin', 'Mac OS running on ARM')
+makeproject-1     | added platform: (create_time, name, user_friendly_name) values (1789635641, 'sparc-sun-solaris2.7', 'Solaris 2.7 running on a SPARC-compatible CPU')
+makeproject-1     | added platform: (create_time, name, user_friendly_name) values (1789635641, 'sparc-sun-solaris', 'Solaris 2.8 or later running on a SPARC-compatible CPU')
+client-cluster-1  | 17-Sep-2026 09:02:22 [---] Starting BOINC client version 7.20.5 for aarch64-unknown-linux-gnu
+client-cluster-1  | 17-Sep-2026 09:02:22 [---] This a development version of BOINC and may not function properly
+client-cluster-1  | 17-Sep-2026 09:02:22 [---] log flags: file_xfer, sched_ops, task
+client-cluster-1  | 17-Sep-2026 09:02:22 [---] Libraries: libcurl/7.88.1 OpenSSL/3.0.20 zlib/1.2.13 brotli/1.0.9 zstd/1.5.4 libidn2/2.3.3 libpsl/0.21.2 (+libidn2/2.3.3) libssh2/1.10.0 nghttp2/1.52.0 librtmp/2.3 OpenLDAP/2.5.13
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Data directory: /var/lib/boinc-client
+client-phone-1    | 17-Sep-2026 09:02:27 [---] Starting BOINC client version 7.20.5 for aarch64-unknown-linux-gnu
+client-phone-1      | 17-Sep-2026 09:02:27 [---] This a development version of BOINC and may not function properly
+client-phone-1      | 17-Sep-2026 09:02:27 [---] log flags: file_xfer, sched_ops, task
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Libraries: libcurl/7.88.1 OpenSSL/3.0.20 zlib/1.2.13 brotli/1.0.9 zstd/1.5.4 libidn2/2.3.3 libpsl/0.21.2 (+libidn2/2.3.3) libssh2/1.10.0 nghttp2/1.52.0 librtmp/2.3 OpenLDAP/2.5.13
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Data directory: /var/lib/boinc-client
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] No usable GPUs found
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Creating new client state file
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] libc:  version 2.36
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Host name: cluster-01
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Processor: 4 ARM  [Impl 0x61 Arch 8 Variant 0x0 Part 0x000 Rev 0]
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Processor features: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti afp
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] OS: Linux Debian GNU/Linux: Debian GNU/Linux 12 (bookworm) [6.8.0-100-generic|libc 2.36]
+mysql-1             | Initializing database
+mysql-1             | 
+mysql-1             | 
+mysql-1             | PLEASE REMEMBER TO SET A PASSWORD FOR THE MariaDB root USER !
+mysql-1             | To do so, start the server, then issue the following commands:
+mysql-1             | 
+mysql-1             | '/usr/bin/mysqladmin' -u root password 'new-password'
+mysql-1             | '/usr/bin/mysqladmin' -u root -h  password 'new-password'
+mysql-1             | 
+mysql-1             | Alternatively you can run:
+mysql-1             | '/usr/bin/mysql_secure_installation'
+mysql-1             | 
+mysql-1             | which will also give you the option of removing the test
+mysql-1             | databases and anonymous user created by default.  This is
+mysql-1             | strongly recommended for production servers.
+client-phone-1      | 17-Sep-2026 09:02:27 [---] No usable GPUs found
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Creating new client state file
+client-phone-1      | 17-Sep-2026 09:02:27 [---] libc:  version 2.36
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Host name: phone-01
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Processor: 1 ARM  [Impl 0x61 Arch 8 Variant 0x0 Part 0x000 Rev 0]
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Starting BOINC client version 7.20.5 for aarch64-unknown-linux-gnu
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] This a development version of BOINC and may not function properly
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] log flags: file_xfer, sched_ops, task
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Libraries: libcurl/7.88.1 OpenSSL/3.0.20 zlib/1.2.13 brotli/1.0.9 zstd/1.5.4 libidn2/2.3.3 libpsl/0.21.2 (+libidn2/2.3.3) libssh2/1.10.0 nghttp2/1.52.0 librtmp/2.3 OpenLDAP/2.5.13
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Processor features: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti afp
+client-phone-1      | 17-Sep-2026 09:02:27 [---] OS: Linux Debian GNU/Linux: Debian GNU/Linux 12 (bookworm) [6.8.0-100-generic|libc 2.36]
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Memory: 9.69 GB physical, 0 bytes virtual
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Disk: 18.33 GB total, 15.39 GB free
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Local time is UTC +0 hours
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Config: GUI RPC allowed from any host
+mysql-1             | 
+mysql-1             | See the MariaDB Knowledgebase at http://mariadb.com/kb or the
+mysql-1             | MySQL manual for more instructions.
+mysql-1             | 
+mysql-1             | Please report any problems at http://mariadb.org/jira
+mysql-1             | 
+mysql-1             | The latest information about MariaDB is available at http://mariadb.org/.
+mysql-1             | You can find additional information about the MySQL part at:
+mysql-1             | http://dev.mysql.com
+mysql-1             | Consider joining MariaDB's strong and vibrant community:
+makeproject-1     | added platform: (create_time, name, user_friendly_name) values (1789635641, 'sparc64-sun-solaris', 'Solaris 2.8 or later running on a SPARC 64-bit CPU')
+makeproject-1       | added platform: (create_time, name, user_friendly_name) values (1789635641, 'powerpc64-ps3-linux-gnu', 'Sony Playstation 3 running Linux')
+makeproject-1       | added platform: (create_time, name, user_friendly_name) values (1789635641, 'arm-android-linux-gnu', 'Android running on ARM armeabi-v7a')
+makeproject-1       | added platform: (create_time, name, user_friendly_name) values (1789635641, 'aarch64-android-linux-gnu', 'Android running on ARM 64-bit arm64-v8a')
+makeproject-1       | added platform: (create_time, name, user_friendly_name) values (1789635641, 'x86_64-android-linux-gnu', 'Android running on Intel x64 compatible')
+makeproject-1       | added platform: (create_time, name, user_friendly_name) values (1789635641, 'x86-android-linux-gnu', 'Android running on Intel x86 compatible')
+makeproject-1       | added platform: (create_time, name, user_friendly_name) values (1789635641, 'arm-unknown-linux-gnueabihf', 'Linux running on ARM, hardware FP')
+makeproject-1       | added platform: (create_time, name, user_friendly_name) values (1789635641, 'aarch64-unknown-linux-gnu', 'Linux running on ARM64')
+makeproject-1       | added platform: (create_time, name, user_friendly_name) values (1789635641, 'anonymous', 'anonymous')
+makeproject-1       | 
+mysql-1             | https://mariadb.org/get-involved/
+mysql-1             | 
+mysql-1             | Database initialized
+mysql-1             | MySQL init process in progress...
+mysql-1             | 2026-09-17  9:00:33 0 [Note] mysqld (mysqld 10.3.8-MariaDB-1:10.3.8+maria~bionic) starting as process 103 ...
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: Using Linux native AIO
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: Uses event mutexes
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: Number of pools: 1
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: Using generic crc32 instructions
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Config: simulate 1 CPUs
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Config: report completed tasks immediately
+client-phone-1      | 17-Sep-2026 09:02:27 [---] No general preferences found - using defaults
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Reading preferences override file
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Preferences:
+client-phone-1      | 17-Sep-2026 09:02:27 [---]    max memory usage when active: 8929.14 MB
+client-phone-1      | 17-Sep-2026 09:02:27 [---]    max memory usage when idle: 8929.14 MB
+client-phone-1      | 17-Sep-2026 09:02:27 [---]    max disk usage: 2.00 GB
+client-phone-1      | 17-Sep-2026 09:02:27 [---]    don't use GPU while active
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Memory: 9.69 GB physical, 0 bytes virtual
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Disk: 18.33 GB total, 15.39 GB free
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Local time is UTC +0 hours
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Config: GUI RPC allowed from any host
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Config: simulate 4 CPUs
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Config: report completed tasks immediately
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] No general preferences found - using defaults
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Reading preferences override file
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Preferences:
+client-cluster-1    | 17-Sep-2026 09:02:22 [---]    max memory usage when active: 8929.14 MB
+client-cluster-1    | 17-Sep-2026 09:02:22 [---]    max memory usage when idle: 8929.14 MB
+client-cluster-1    | dir_open: Could not open directory 'slots' from '/var/lib/boinc-client'.
+client-phone-2-1  | 17-Sep-2026 09:02:27 [---] Local time is UTC +0 hours
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---] Config: GUI RPC allowed from any host
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---] Config: simulate 1 CPUs
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---] Config: report completed tasks immediately
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---] No general preferences found - using defaults
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---] Reading preferences override file
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---] Preferences:
+apache-1            | /usr/lib/python2.7/dist-packages/supervisor/options.py:461: UserWarning: Supervisord is running as root and it is searching for its configuration file in default locations (including its current working directory); you probably want to specify a "-c" argument specifying an absolute path to a configuration file for improved security.
+apache-1            |   'Supervisord is running as root and it is searching '
+apache-1            | 2026-09-17 09:00:31,216 CRIT Supervisor is running as root.  Privileges were not dropped because no user is specified in the config file.  If you intend to run as root, you can set user=root in the config file to avoid this message.
+apache-1            | 2026-09-17 09:00:31,216 INFO Included extra file "/etc/supervisor/conf.d/supervisord.conf" during parsing
+apache-1            | 2026-09-17 09:00:31,220 INFO RPC interface 'supervisor' initialized
+apache-1            | 2026-09-17 09:00:31,220 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+apache-1            | 2026-09-17 09:00:31,220 INFO supervisord started with pid 1
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Data directory: /var/lib/boinc-client
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] No usable GPUs found
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Creating new client state file
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] libc:  version 2.36
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Host name: low-power-01
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Processor: 1 ARM  [Impl 0x61 Arch 8 Variant 0x0 Part 0x000 Rev 0]
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Processor features: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti afp
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] OS: Linux Debian GNU/Linux: Debian GNU/Linux 12 (bookworm) [6.8.0-100-generic|libc 2.36]
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Memory: 9.69 GB physical, 0 bytes virtual
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Disk: 18.33 GB total, 15.39 GB free
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Local time is UTC +0 hours
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Config: GUI RPC allowed from any host
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Config: simulate 1 CPUs
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Starting BOINC client version 7.20.5 for aarch64-unknown-linux-gnu
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] This a development version of BOINC and may not function properly
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] log flags: file_xfer, sched_ops, task
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Libraries: libcurl/7.88.1 OpenSSL/3.0.20 zlib/1.2.13 brotli/1.0.9 zstd/1.5.4 libidn2/2.3.3 libpsl/0.21.2 (+libidn2/2.3.3) libssh2/1.10.0 nghttp2/1.52.0 librtmp/2.3 OpenLDAP/2.5.13
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Data directory: /var/lib/boinc-client
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] No usable GPUs found
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Creating new client state file
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: Initializing buffer pool, total size = 256M, instances = 1, chunk size = 128M
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: Completed initialization of buffer pool
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: 10.3.8 started; log sequence number 1630815; transaction id 21
+client-phone-1      | 17-Sep-2026 09:02:27 [---]    suspend work if non-BOINC CPU load exceeds 25%
+client-phone-1      | 17-Sep-2026 09:02:27 [---]    (to change preferences, visit a project web site or select Preferences in the Manager)
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Setting up project and slot directories
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Checking active tasks
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Setting up GUI RPC socket
+client-phone-1      | 17-Sep-2026 09:02:27 [---] Checking presence of 0 project files
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Config: report completed tasks immediately
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] No general preferences found - using defaults
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Reading preferences override file
+apache-1            | 2026-09-17 09:00:32,229 INFO spawned: 'cron' with pid 9
+apache-1            | 2026-09-17 09:00:32,232 INFO spawned: 'start' with pid 10
+apache-1            | 2026-09-17 09:00:32,234 INFO spawned: 'rsyslogd' with pid 11
+apache-1            | 2026-09-17 09:00:32,238 INFO spawned: 'apache2' with pid 12
+apache-1            | 2026-09-17 09:00:34,211 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Starting BOINC client version 7.20.5 for aarch64-unknown-linux-gnu
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] This a development version of BOINC and may not function properly
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] log flags: file_xfer, sched_ops, task
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Libraries: libcurl/7.88.1 OpenSSL/3.0.20 zlib/1.2.13 brotli/1.0.9 zstd/1.5.4 libidn2/2.3.3 libpsl/0.21.2 (+libidn2/2.3.3) libssh2/1.10.0 nghttp2/1.52.0 librtmp/2.3 OpenLDAP/2.5.13
+apache-1            | 2026-09-17 09:00:34,211 INFO success: start entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+apache-1            | 2026-09-17 09:00:34,211 INFO success: rsyslogd entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+apache-1            | 2026-09-17 09:00:34,211 INFO success: apache2 entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] libc:  version 2.36
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Host name: cluster-02
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Processor: 4 ARM  [Impl 0x61 Arch 8 Variant 0x0 Part 0x000 Rev 0]
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Processor features: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti afp
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] OS: Linux Debian GNU/Linux: Debian GNU/Linux 12 (bookworm) [6.8.0-100-generic|libc 2.36]
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Memory: 9.69 GB physical, 0 bytes virtual
+apache-1            | 2026-09-17 09:00:47,738 INFO reaped unknown pid 64
+apache-1            | 2026-09-17 09:00:47,738 INFO reaped unknown pid 66
+apache-1            | 2026-09-17 09:00:47,738 INFO reaped unknown pid 68
+apache-1            | 2026-09-17 09:01:04,467 INFO reaped unknown pid 67
+apache-1            | 2026-09-17 09:01:04,467 INFO reaped unknown pid 69
+apache-1            | 2026-09-17 09:01:04,469 INFO reaped unknown pid 65
+apache-1            | 2026-09-17 09:01:12,677 INFO reaped unknown pid 154
+apache-1            | 2026-09-17 09:01:12,677 INFO reaped unknown pid 156
+apache-1            | 2026-09-17 09:01:12,677 INFO reaped unknown pid 158
+apache-1            | 2026-09-17 09:01:12,677 INFO reaped unknown pid 160
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---]    max memory usage when active: 8929.14 MB
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---]    max memory usage when idle: 8929.14 MB
+client-phone-2-1    | dir_open: Could not open directory 'slots' from '/var/lib/boinc-client'.
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---]    max disk usage: 2.00 GB
+client-cluster-1    | 17-Sep-2026 09:02:22 [---]    max disk usage: 2.00 GB
+client-cluster-1    | 17-Sep-2026 09:02:22 [---]    don't use GPU while active
+client-cluster-1    | 17-Sep-2026 09:02:22 [---]    suspend work if non-BOINC CPU load exceeds 25%
+client-cluster-1    | 17-Sep-2026 09:02:22 [---]    (to change preferences, visit a project web site or select Preferences in the Manager)
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Disk: 18.33 GB total, 15.39 GB free
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Local time is UTC +0 hours
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Config: GUI RPC allowed from any host
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Config: simulate 4 CPUs
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---]    don't use GPU while active
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---]    suspend work if non-BOINC CPU load exceeds 25%
+client-phone-1      | 17-Sep-2026 09:02:27 [---] This computer is not attached to any projects
+client-phone-1      | dir_open: Could not open directory 'slots' from '/var/lib/boinc-client'.
+client-phone-1      | 17-Sep-2026 09:02:27 Initialization completed
+client-phone-1      | dir_open: Could not open directory 'projects/boincserver.local_boincserver' from '/var/lib/boinc-client'.
+client-phone-1      | 17-Sep-2026 09:02:28 [---] No general preferences found - using defaults
+client-phone-1      | 17-Sep-2026 09:02:28 [---] Reading preferences override file
+apache-1            | 2026-09-17 09:01:12,678 INFO reaped unknown pid 162
+apache-1            | 2026-09-17 09:05:01,264 INFO reaped unknown pid 533
+apache-1            | 2026-09-17 09:05:01,366 INFO reaped unknown pid 535
+apache-1            | 2026-09-17 09:05:01,471 INFO reaped unknown pid 537
+apache-1            | 2026-09-17 09:05:01,575 INFO reaped unknown pid 539
+apache-1            | 2026-09-17 09:05:01,676 INFO reaped unknown pid 541
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 532
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 534
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 536
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Setting up project and slot directories
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Checking active tasks
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+mysql-1             | 2026-09-17  9:00:33 0 [Note] Plugin 'FEEDBACK' is disabled.
+mysql-1             | 2026-09-17  9:00:33 0 [Note] InnoDB: Buffer pool(s) load completed at 260917  9:00:33
+mysql-1             | 2026-09-17  9:00:33 0 [Warning] 'user' entry 'root@6f4a3fc164a2' ignored in --skip-name-resolve mode.
+mysql-1             | 2026-09-17  9:00:33 0 [Warning] 'user' entry '@6f4a3fc164a2' ignored in --skip-name-resolve mode.
+mysql-1             | 2026-09-17  9:00:33 0 [Warning] 'proxies_priv' entry '@% root@6f4a3fc164a2' ignored in --skip-name-resolve mode.
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Data directory: /var/lib/boinc-client
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] No usable GPUs found
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Creating new client state file
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Config: report completed tasks immediately
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] No general preferences found - using defaults
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Reading preferences override file
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Preferences:
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---]    (to change preferences, visit a project web site or select Preferences in the Manager)
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---] Setting up project and slot directories
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---] Checking active tasks
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---] Setting up GUI RPC socket
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---] Checking presence of 0 project files
+client-phone-2-1    | 17-Sep-2026 09:02:27 [---] This computer is not attached to any projects
+client-phone-2-1    | 17-Sep-2026 09:02:27 Initialization completed
+client-phone-2-1    | dir_open: Could not open directory 'projects/boincserver.local_boincserver' from '/var/lib/boinc-client'.
+client-phone-2-1    | 17-Sep-2026 09:02:28 [---] No general preferences found - using defaults
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] libc:  version 2.36
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Host name: desktop-01
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Processor: 2 ARM  [Impl 0x61 Arch 8 Variant 0x0 Part 0x000 Rev 0]
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Processor features: fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 asimddp sha512 asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp flagm2 frint i8mm bf16 bti afp
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Setting up GUI RPC socket
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] Checking presence of 0 project files
+client-cluster-1    | 17-Sep-2026 09:02:22 [---] This computer is not attached to any projects
+client-cluster-1    | 17-Sep-2026 09:02:22 Initialization completed
+client-cluster-1    | dir_open: Could not open directory 'projects/boincserver.local_boincserver' from '/var/lib/boinc-client'.
+client-cluster-1    | 17-Sep-2026 09:02:23 [---] No general preferences found - using defaults
+client-cluster-1    | 17-Sep-2026 09:02:23 [---] Reading preferences override file
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] OS: Linux Debian GNU/Linux: Debian GNU/Linux 12 (bookworm) [6.8.0-100-generic|libc 2.36]
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Memory: 9.69 GB physical, 0 bytes virtual
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Disk: 18.33 GB total, 15.39 GB free
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Local time is UTC +0 hours
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Config: GUI RPC allowed from any host
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Config: simulate 2 CPUs
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Config: report completed tasks immediately
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] No general preferences found - using defaults
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Reading preferences override file
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Preferences:
+client-desktop-1    | 17-Sep-2026 09:02:27 [---]    max memory usage when active: 8929.14 MB
+client-phone-1      | 17-Sep-2026 09:02:28 [---] Preferences:
+client-phone-1      | 17-Sep-2026 09:02:28 [---]    max memory usage when active: 8929.14 MB
+client-phone-1      | 17-Sep-2026 09:02:28 [---]    max memory usage when idle: 8929.14 MB
+client-phone-1      | 17-Sep-2026 09:02:28 [---]    max disk usage: 2.00 GB
+mysql-1             | 2026-09-17  9:00:33 0 [Note] Reading of all Master_info entries succeded
+client-phone-1      | 17-Sep-2026 09:02:28 [---]    don't use GPU while active
+client-phone-1      | 17-Sep-2026 09:02:28 [---]    suspend work if non-BOINC CPU load exceeds 25%
+client-phone-1      | 17-Sep-2026 09:02:28 [---]    (to change preferences, visit a project web site or select Preferences in the Manager)
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Preferences:
+client-low-power-1  | 17-Sep-2026 09:02:22 [---]    max memory usage when active: 8929.14 MB
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---]    max memory usage when active: 8929.14 MB
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---]    max memory usage when idle: 8929.14 MB
+client-cluster-2-1  | dir_open: Could not open directory 'slots' from '/var/lib/boinc-client'.
+mysql-1             | 2026-09-17  9:00:33 0 [Note] Added new Master_info '' to hash table
+mysql-1             | 2026-09-17  9:00:33 0 [Note] mysqld: ready for connections.
+mysql-1             | Version: '10.3.8-MariaDB-1:10.3.8+maria~bionic'  socket: '/var/run/mysqld/mysqld.sock'  port: 0  mariadb.org binary distribution
+mysql-1             | Warning: Unable to load '/usr/share/zoneinfo/leap-seconds.list' as time zone. Skipping it.
+mysql-1             | 2026-09-17  9:00:34 10 [Warning] 'proxies_priv' entry '@% root@6f4a3fc164a2' ignored in --skip-name-resolve mode.
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 538
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 540
+client-desktop-1    | 17-Sep-2026 09:02:27 [---]    max memory usage when idle: 8929.14 MB
+client-desktop-1    | dir_open: Could not open directory 'slots' from '/var/lib/boinc-client'.
+client-desktop-1    | 17-Sep-2026 09:02:27 [---]    max disk usage: 2.00 GB
+client-phone-1      | 17-Sep-2026 09:02:32 [http://boincserver.local/boincserver/] Fetching scheduler list
+client-phone-1      | 17-Sep-2026 09:02:34 [http://boincserver.local/boincserver/] Master file download succeeded
+mysql-1             | 
+mysql-1             | 2026-09-17  9:00:34 0 [Note] mysqld (initiated by: unknown): Normal shutdown
+mysql-1             | 2026-09-17  9:00:34 0 [Note] Event Scheduler: Purging the queue. 0 events
+mysql-1             | 2026-09-17  9:00:34 0 [Note] InnoDB: FTS optimize thread exiting.
+mysql-1             | 2026-09-17  9:00:34 0 [Note] InnoDB: Starting shutdown...
+mysql-1             | 2026-09-17  9:00:34 0 [Note] InnoDB: Dumping buffer pool(s) to /var/lib/mysql/ib_buffer_pool
+client-cluster-1    | 17-Sep-2026 09:02:23 [---] Preferences:
+client-cluster-1    | 17-Sep-2026 09:02:23 [---]    max memory usage when active: 8929.14 MB
+client-cluster-1    | 17-Sep-2026 09:02:23 [---]    max memory usage when idle: 8929.14 MB
+client-cluster-1    | 17-Sep-2026 09:02:23 [---]    max disk usage: 2.00 GB
+client-cluster-1    | 17-Sep-2026 09:02:23 [---]    don't use GPU while active
+client-cluster-1    | 17-Sep-2026 09:02:23 [---]    suspend work if non-BOINC CPU load exceeds 25%
+client-low-power-1  | 17-Sep-2026 09:02:22 [---]    max memory usage when idle: 8929.14 MB
+client-low-power-1  | dir_open: Could not open directory 'slots' from '/var/lib/boinc-client'.
+mysql-1             | 2026-09-17  9:00:34 0 [Note] InnoDB: Buffer pool(s) dump completed at 260917  9:00:34
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Shutdown completed; log sequence number 1630824; transaction id 24
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Removed temporary tablespace data file: "ibtmp1"
+mysql-1             | 2026-09-17  9:00:35 0 [Note] mysqld: Shutdown complete
+mysql-1             | 
+mysql-1             | 
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---]    max disk usage: 2.00 GB
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---]    don't use GPU while active
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---]    suspend work if non-BOINC CPU load exceeds 25%
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---]    (to change preferences, visit a project web site or select Preferences in the Manager)
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Setting up project and slot directories
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Checking active tasks
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Setting up GUI RPC socket
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] Checking presence of 0 project files
+client-cluster-2-1  | 17-Sep-2026 09:02:22 [---] This computer is not attached to any projects
+client-cluster-2-1  | 17-Sep-2026 09:02:22 Initialization completed
+client-cluster-2-1  | dir_open: Could not open directory 'projects/boincserver.local_boincserver' from '/var/lib/boinc-client'.
+client-cluster-2-1  | 17-Sep-2026 09:02:23 [---] No general preferences found - using defaults
+client-cluster-1    | 17-Sep-2026 09:02:23 [---]    (to change preferences, visit a project web site or select Preferences in the Manager)
+client-cluster-1    | 17-Sep-2026 09:02:27 [http://boincserver.local/boincserver/] Fetching scheduler list
+client-cluster-1    | 17-Sep-2026 09:02:29 [http://boincserver.local/boincserver/] Master file download succeeded
+client-cluster-1    | 17-Sep-2026 09:02:34 [http://boincserver.local/boincserver/] Sending scheduler request: Project initialization.
+mysql-1             | MySQL init process done. Ready for start up.
+mysql-1             | 
+mysql-1             | 2026-09-17  9:00:35 0 [Note] mysqld (mysqld 10.3.8-MariaDB-1:10.3.8+maria~bionic) starting as process 1 ...
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Using Linux native AIO
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Mutexes and rw_locks use GCC atomic builtins
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Uses event mutexes
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Compressed tables use zlib 1.2.11
+client-phone-2-1    | 17-Sep-2026 09:02:28 [---] Reading preferences override file
+client-phone-2-1    | 17-Sep-2026 09:02:28 [---] Preferences:
+client-phone-2-1    | 17-Sep-2026 09:02:28 [---]    max memory usage when active: 8929.14 MB
+client-cluster-2-1  | 17-Sep-2026 09:02:23 [---] Reading preferences override file
+client-cluster-2-1  | 17-Sep-2026 09:02:23 [---] Preferences:
+client-cluster-2-1  | 17-Sep-2026 09:02:23 [---]    max memory usage when active: 8929.14 MB
+client-cluster-2-1  | 17-Sep-2026 09:02:23 [---]    max memory usage when idle: 8929.14 MB
+client-cluster-2-1  | 17-Sep-2026 09:02:23 [---]    max disk usage: 2.00 GB
+client-cluster-2-1  | 17-Sep-2026 09:02:23 [---]    don't use GPU while active
+client-cluster-2-1  | 17-Sep-2026 09:02:23 [---]    suspend work if non-BOINC CPU load exceeds 25%
+client-cluster-2-1  | 17-Sep-2026 09:02:23 [---]    (to change preferences, visit a project web site or select Preferences in the Manager)
+client-cluster-2-1  | 17-Sep-2026 09:02:27 [http://boincserver.local/boincserver/] Fetching scheduler list
+client-cluster-2-1  | 17-Sep-2026 09:02:34 [http://boincserver.local/boincserver/] Master file download succeeded
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 542
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 543
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 549
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 550
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 552
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 554
+client-phone-2-1    | 17-Sep-2026 09:02:28 [---]    max memory usage when idle: 8929.14 MB
+client-phone-2-1    | 17-Sep-2026 09:02:28 [---]    max disk usage: 2.00 GB
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Number of pools: 1
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Using generic crc32 instructions
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Initializing buffer pool, total size = 256M, instances = 1, chunk size = 128M
+client-low-power-1  | 17-Sep-2026 09:02:22 [---]    max disk usage: 2.00 GB
+client-low-power-1  | 17-Sep-2026 09:02:22 [---]    don't use GPU while active
+client-phone-1      | 17-Sep-2026 09:02:39 [http://boincserver.local/boincserver/] Sending scheduler request: Project initialization.
+client-phone-1      | 17-Sep-2026 09:02:39 [http://boincserver.local/boincserver/] Requesting new tasks for CPU
+client-phone-1      | 17-Sep-2026 09:02:41 [boincserver] Scheduler request completed: got 1 new tasks
+client-phone-1      | 17-Sep-2026 09:02:41 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:02:39 [http://boincserver.local/boincserver/] Sending scheduler request: Project initialization.
+client-cluster-2-1  | 17-Sep-2026 09:02:39 [http://boincserver.local/boincserver/] Requesting new tasks for CPU
+client-cluster-2-1  | 17-Sep-2026 09:02:41 [boincserver] Scheduler request completed: got 1 new tasks
+client-cluster-2-1  | 17-Sep-2026 09:02:41 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:02:43 [boincserver] Started download of hybrid_synthetic_1.0_aarch64-unknown-linux-gnu
+client-cluster-2-1  | 17-Sep-2026 09:02:43 [boincserver] Started download of hybrid_synthetic_input.txt
+client-desktop-1    | 17-Sep-2026 09:02:27 [---]    don't use GPU while active
+client-desktop-1    | 17-Sep-2026 09:02:27 [---]    suspend work if non-BOINC CPU load exceeds 25%
+client-desktop-1    | 17-Sep-2026 09:02:27 [---]    (to change preferences, visit a project web site or select Preferences in the Manager)
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Setting up project and slot directories
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Checking active tasks
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Setting up GUI RPC socket
+client-phone-2-1    | 17-Sep-2026 09:02:28 [---]    don't use GPU while active
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 556
+apache-1            | 2026-09-17 09:05:02,713 INFO reaped unknown pid 558
+apache-1            | 2026-09-17 09:05:07,012 INFO reaped unknown pid 547
+client-cluster-1    | 17-Sep-2026 09:02:34 [http://boincserver.local/boincserver/] Requesting new tasks for CPU
+client-phone-2-1    | 17-Sep-2026 09:02:28 [---]    suspend work if non-BOINC CPU load exceeds 25%
+client-phone-2-1    | 17-Sep-2026 09:02:28 [---]    (to change preferences, visit a project web site or select Preferences in the Manager)
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] Checking presence of 0 project files
+client-desktop-1    | 17-Sep-2026 09:02:27 [---] This computer is not attached to any projects
+client-desktop-1    | 17-Sep-2026 09:02:27 Initialization completed
+client-desktop-1    | dir_open: Could not open directory 'projects/boincserver.local_boincserver' from '/var/lib/boinc-client'.
+client-desktop-1    | 17-Sep-2026 09:02:28 [---] No general preferences found - using defaults
+client-cluster-1    | 17-Sep-2026 09:02:36 [boincserver] Scheduler request completed: got 1 new tasks
+client-cluster-1    | 17-Sep-2026 09:02:36 [boincserver] Project requested delay of 7 seconds
+client-cluster-1    | 17-Sep-2026 09:02:38 [boincserver] Started download of hybrid_synthetic_1.0_aarch64-unknown-linux-gnu
+client-cluster-1    | 17-Sep-2026 09:02:38 [boincserver] Started download of hybrid_synthetic_input.txt
+client-cluster-1    | 17-Sep-2026 09:02:40 [boincserver] Finished download of hybrid_synthetic_1.0_aarch64-unknown-linux-gnu
+client-cluster-1    | 17-Sep-2026 09:02:40 [boincserver] Finished download of hybrid_synthetic_input.txt
+client-cluster-1    | 17-Sep-2026 09:02:40 [boincserver] Starting task exp_20260917T084802Z_lpt_long_1_0
+client-cluster-1    | 17-Sep-2026 09:02:46 [boincserver] Sending scheduler request: To fetch work.
+client-cluster-1    | 17-Sep-2026 09:02:46 [boincserver] Requesting new tasks for CPU
+client-cluster-1    | 17-Sep-2026 09:02:48 [boincserver] Scheduler request completed: got 4 new tasks
+client-cluster-2-1  | 17-Sep-2026 09:02:45 [boincserver] Finished download of hybrid_synthetic_1.0_aarch64-unknown-linux-gnu
+client-cluster-2-1  | 17-Sep-2026 09:02:45 [boincserver] Finished download of hybrid_synthetic_input.txt
+client-cluster-2-1  | 17-Sep-2026 09:02:45 [boincserver] Starting task exp_20260917T084802Z_lpt_long_2_0
+client-cluster-2-1  | 17-Sep-2026 09:02:51 [boincserver] Sending scheduler request: To fetch work.
+client-cluster-2-1  | 17-Sep-2026 09:02:51 [boincserver] Requesting new tasks for CPU
+client-cluster-2-1  | 17-Sep-2026 09:02:53 [boincserver] Scheduler request completed: got 4 new tasks
+client-cluster-2-1  | 17-Sep-2026 09:02:53 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:02:55 [boincserver] Starting task exp_20260917T084802Z_lpt_medium_6_0
+client-cluster-2-1  | 17-Sep-2026 09:02:55 [boincserver] Starting task exp_20260917T084802Z_lpt_medium_5_0
+client-cluster-2-1  | 17-Sep-2026 09:02:55 [boincserver] Starting task exp_20260917T084802Z_lpt_medium_8_0
+client-cluster-2-1  | 17-Sep-2026 09:03:03 [boincserver] Sending scheduler request: To fetch work.
+client-phone-1      | 17-Sep-2026 09:02:43 [boincserver] Started download of hybrid_synthetic_1.0_aarch64-unknown-linux-gnu
+client-phone-1      | 17-Sep-2026 09:02:43 [boincserver] Started download of hybrid_synthetic_input.txt
+client-phone-1      | 17-Sep-2026 09:02:45 [boincserver] Finished download of hybrid_synthetic_1.0_aarch64-unknown-linux-gnu
+client-phone-1      | 17-Sep-2026 09:02:46 [boincserver] Finished download of hybrid_synthetic_input.txt
+client-phone-1      | 17-Sep-2026 09:02:46 [boincserver] Starting task exp_20260917T084802Z_lpt_long_6_0
+client-phone-1      | 17-Sep-2026 09:02:51 [boincserver] Sending scheduler request: To fetch work.
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Completed initialization of buffer pool
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: If the mysqld execution user is authorized, page cleaner thread priority can be changed. See the man page of setpriority().
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: 128 out of 128 rollback segments are active.
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Creating shared tablespace for temporary tables
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Setting file './ibtmp1' size to 12 MB. Physically writing the file full; Please wait ...
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: File './ibtmp1' size is now 12 MB.
+client-cluster-1    | 17-Sep-2026 09:02:48 [boincserver] Project requested delay of 7 seconds
+client-cluster-1    | 17-Sep-2026 09:02:50 [boincserver] Starting task exp_20260917T084802Z_lpt_medium_1_0
+client-cluster-1    | 17-Sep-2026 09:02:50 [boincserver] Starting task exp_20260917T084802Z_lpt_medium_4_0
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Waiting for purge to start
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: 10.3.8 started; log sequence number 1630824; transaction id 21
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Loading buffer pool(s) from /var/lib/mysql/ib_buffer_pool
+mysql-1             | 2026-09-17  9:00:35 0 [Note] Plugin 'FEEDBACK' is disabled.
+client-phone-1      | 17-Sep-2026 09:02:51 [boincserver] Requesting new tasks for CPU
+client-phone-1      | 17-Sep-2026 09:02:53 [boincserver] Scheduler request completed: got 1 new tasks
+client-phone-1      | 17-Sep-2026 09:02:53 [boincserver] Project requested delay of 7 seconds
+client-phone-1      | 17-Sep-2026 09:03:03 [boincserver] Sending scheduler request: To fetch work.
+client-phone-1      | 17-Sep-2026 09:03:03 [boincserver] Requesting new tasks for CPU
+client-cluster-2-1  | 17-Sep-2026 09:03:03 [boincserver] Requesting new tasks for CPU
+client-cluster-2-1  | 17-Sep-2026 09:03:10 [boincserver] Scheduler request completed: got 3 new tasks
+client-cluster-2-1  | 17-Sep-2026 09:03:10 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:03:20 [boincserver] Sending scheduler request: To fetch work.
+client-cluster-2-1  | 17-Sep-2026 09:03:20 [boincserver] Requesting new tasks for CPU
+client-cluster-2-1  | 17-Sep-2026 09:03:27 [boincserver] Scheduler request completed: got 0 new tasks
+client-cluster-2-1  | 17-Sep-2026 09:03:27 [boincserver] No tasks sent
+client-cluster-2-1  | 17-Sep-2026 09:03:27 [boincserver] This computer has reached a limit on tasks in progress
+mysql-1             | 2026-09-17  9:00:35 0 [Note] InnoDB: Buffer pool(s) load completed at 260917  9:00:35
+mysql-1             | 2026-09-17  9:00:35 0 [Note] Server socket created on IP: '::'.
+mysql-1             | 2026-09-17  9:00:35 0 [Warning] 'proxies_priv' entry '@% root@6f4a3fc164a2' ignored in --skip-name-resolve mode.
+client-cluster-2-1  | 17-Sep-2026 09:03:27 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:03:33 [boincserver] Computation for task exp_20260917T084802Z_lpt_medium_6_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:03:33 [boincserver] Starting task exp_20260917T084802Z_lpt_medium_11_0
+client-cluster-2-1  | 17-Sep-2026 09:03:34 [boincserver] Computation for task exp_20260917T084802Z_lpt_medium_5_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:03:34 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-2-1  | 17-Sep-2026 09:03:34 [boincserver] Starting task exp_20260917T084802Z_lpt_short_3_0
+client-cluster-2-1  | 17-Sep-2026 09:03:35 [boincserver] Started upload of exp_20260917T084802Z_lpt_medium_6_0_r1319994290_0
+client-cluster-2-1  | 17-Sep-2026 09:03:35 [boincserver] Computation for task exp_20260917T084802Z_lpt_medium_8_0 finished
+client-phone-2-1    | 17-Sep-2026 09:02:32 [http://boincserver.local/boincserver/] Fetching scheduler list
+client-phone-2-1    | 17-Sep-2026 09:02:34 [http://boincserver.local/boincserver/] Master file download succeeded
+client-phone-2-1    | 17-Sep-2026 09:02:39 [http://boincserver.local/boincserver/] Sending scheduler request: Project initialization.
+client-phone-2-1    | 17-Sep-2026 09:02:39 [http://boincserver.local/boincserver/] Requesting new tasks for CPU
+client-phone-2-1    | 17-Sep-2026 09:02:41 [boincserver] Scheduler request completed: got 1 new tasks
+client-phone-1      | 17-Sep-2026 09:03:10 [boincserver] Scheduler request completed: got 0 new tasks
+client-phone-1      | 17-Sep-2026 09:03:10 [boincserver] No tasks sent
+client-low-power-1  | 17-Sep-2026 09:02:22 [---]    suspend work if non-BOINC CPU load exceeds 25%
+client-low-power-1  | 17-Sep-2026 09:02:22 [---]    (to change preferences, visit a project web site or select Preferences in the Manager)
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Setting up project and slot directories
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Checking active tasks
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Setting up GUI RPC socket
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] Checking presence of 0 project files
+client-low-power-1  | 17-Sep-2026 09:02:22 [---] This computer is not attached to any projects
+client-low-power-1  | 17-Sep-2026 09:02:22 Initialization completed
+client-phone-2-1    | 17-Sep-2026 09:02:41 [boincserver] Project requested delay of 7 seconds
+client-phone-2-1    | 17-Sep-2026 09:02:43 [boincserver] Started download of hybrid_synthetic_1.0_aarch64-unknown-linux-gnu
+client-phone-2-1    | 17-Sep-2026 09:02:43 [boincserver] Started download of hybrid_synthetic_input.txt
+client-phone-2-1    | 17-Sep-2026 09:02:45 [boincserver] Finished download of hybrid_synthetic_1.0_aarch64-unknown-linux-gnu
+client-phone-2-1    | 17-Sep-2026 09:02:45 [boincserver] Finished download of hybrid_synthetic_input.txt
+client-phone-2-1    | 17-Sep-2026 09:02:45 [boincserver] Starting task exp_20260917T084802Z_lpt_long_5_0
+client-phone-2-1    | 17-Sep-2026 09:02:51 [boincserver] Sending scheduler request: To fetch work.
+client-desktop-1    | 17-Sep-2026 09:02:28 [---] Reading preferences override file
+client-desktop-1    | 17-Sep-2026 09:02:28 [---] Preferences:
+client-desktop-1    | 17-Sep-2026 09:02:28 [---]    max memory usage when active: 8929.14 MB
+client-desktop-1    | 17-Sep-2026 09:02:28 [---]    max memory usage when idle: 8929.14 MB
+client-desktop-1    | 17-Sep-2026 09:02:28 [---]    max disk usage: 2.00 GB
+client-desktop-1    | 17-Sep-2026 09:02:28 [---]    don't use GPU while active
+client-desktop-1    | 17-Sep-2026 09:02:28 [---]    suspend work if non-BOINC CPU load exceeds 25%
+client-desktop-1    | 17-Sep-2026 09:02:28 [---]    (to change preferences, visit a project web site or select Preferences in the Manager)
+client-desktop-1    | 17-Sep-2026 09:02:32 [http://boincserver.local/boincserver/] Fetching scheduler list
+client-desktop-1    | 17-Sep-2026 09:02:34 [http://boincserver.local/boincserver/] Master file download succeeded
+client-desktop-1    | 17-Sep-2026 09:02:39 [http://boincserver.local/boincserver/] Sending scheduler request: Project initialization.
+client-desktop-1    | 17-Sep-2026 09:02:39 [http://boincserver.local/boincserver/] Requesting new tasks for CPU
+client-desktop-1    | 17-Sep-2026 09:02:41 [boincserver] Scheduler request completed: got 1 new tasks
+client-desktop-1    | 17-Sep-2026 09:02:41 [boincserver] Project requested delay of 7 seconds
+mysql-1             | 2026-09-17  9:00:35 0 [Note] Reading of all Master_info entries succeded
+mysql-1             | 2026-09-17  9:00:35 0 [Note] Added new Master_info '' to hash table
+mysql-1             | 2026-09-17  9:00:35 0 [Note] mysqld: ready for connections.
+mysql-1             | Version: '10.3.8-MariaDB-1:10.3.8+maria~bionic'  socket: '/var/run/mysqld/mysqld.sock'  port: 3306  mariadb.org binary distribution
+mysql-1             | 2026-09-17  9:00:36 8 [Warning] Access denied for user 'boincadm'@'172.21.0.2' (using password: NO)
+mysql-1             | 2026-09-17  9:01:04 17 [Warning] Aborted connection 17 to db: 'boincserver' user: 'root' host: '172.21.0.4' (Got an error reading communication packets)
+mysql-1             | 2026-09-17  9:01:04 16 [Warning] Aborted connection 16 to db: 'boincserver' user: 'root' host: '172.21.0.4' (Got an error reading communication packets)
+mysql-1             | 2026-09-17  9:01:04 15 [Warning] Aborted connection 15 to db: 'boincserver' user: 'root' host: '172.21.0.4' (Got an error reading communication packets)
+mysql-1             | 2026-09-17  9:05:01 161 [Warning] Aborted connection 161 to db: 'boincserver' user: 'root' host: '172.21.0.4' (Got an error reading communication packets)
+mysql-1             | 2026-09-17  9:05:02 163 [Warning] Aborted connection 163 to db: 'boincserver' user: 'root' host: '172.21.0.4' (Got an error reading communication packets)
+client-low-power-1  | dir_open: Could not open directory 'projects/boincserver.local_boincserver' from '/var/lib/boinc-client'.
+client-low-power-1  | 17-Sep-2026 09:02:23 [---] No general preferences found - using defaults
+client-low-power-1  | 17-Sep-2026 09:02:23 [---] Reading preferences override file
+client-low-power-1  | 17-Sep-2026 09:02:23 [---] Preferences:
+client-cluster-1    | 17-Sep-2026 09:02:50 [boincserver] Starting task exp_20260917T084802Z_lpt_medium_3_0
+client-cluster-1    | 17-Sep-2026 09:02:58 [boincserver] Sending scheduler request: To fetch work.
+client-cluster-1    | 17-Sep-2026 09:02:58 [boincserver] Requesting new tasks for CPU
+client-cluster-1    | 17-Sep-2026 09:03:05 [boincserver] Scheduler request completed: got 3 new tasks
+client-phone-1      | 17-Sep-2026 09:03:10 [boincserver] This computer has reached a limit on tasks in progress
+client-phone-1      | 17-Sep-2026 09:03:10 [boincserver] Project requested delay of 7 seconds
+client-desktop-1    | 17-Sep-2026 09:02:43 [boincserver] Started download of hybrid_synthetic_1.0_aarch64-unknown-linux-gnu
+client-desktop-1    | 17-Sep-2026 09:02:43 [boincserver] Started download of hybrid_synthetic_input.txt
+client-desktop-1    | 17-Sep-2026 09:02:45 [boincserver] Finished download of hybrid_synthetic_1.0_aarch64-unknown-linux-gnu
+client-desktop-1    | 17-Sep-2026 09:02:45 [boincserver] Finished download of hybrid_synthetic_input.txt
+client-desktop-1    | 17-Sep-2026 09:02:45 [boincserver] Starting task exp_20260917T084802Z_lpt_long_3_0
+client-desktop-1    | 17-Sep-2026 09:02:51 [boincserver] Sending scheduler request: To fetch work.
+client-desktop-1    | 17-Sep-2026 09:02:51 [boincserver] Requesting new tasks for CPU
+client-desktop-1    | 17-Sep-2026 09:02:58 [boincserver] Scheduler request completed: got 2 new tasks
+client-desktop-1    | 17-Sep-2026 09:02:58 [boincserver] Project requested delay of 7 seconds
+client-desktop-1    | 17-Sep-2026 09:03:00 [boincserver] Starting task exp_20260917T084802Z_lpt_medium_12_0
+client-desktop-1    | 17-Sep-2026 09:03:08 [boincserver] Sending scheduler request: To fetch work.
+client-phone-2-1    | 17-Sep-2026 09:02:51 [boincserver] Requesting new tasks for CPU
+client-phone-2-1    | 17-Sep-2026 09:02:53 [boincserver] Scheduler request completed: got 1 new tasks
+client-phone-2-1    | 17-Sep-2026 09:02:53 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:03:35 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-2-1  | 17-Sep-2026 09:03:35 [boincserver] Starting task exp_20260917T084802Z_lpt_short_8_0
+client-cluster-2-1  | 17-Sep-2026 09:03:36 [boincserver] Started upload of exp_20260917T084802Z_lpt_medium_5_0_r487594750_0
+client-cluster-2-1  | 17-Sep-2026 09:03:37 [boincserver] Finished upload of exp_20260917T084802Z_lpt_medium_6_0_r1319994290_0
+client-cluster-2-1  | 17-Sep-2026 09:03:37 [boincserver] Finished upload of exp_20260917T084802Z_lpt_medium_5_0_r487594750_0
+client-cluster-2-1  | 17-Sep-2026 09:03:37 [boincserver] Started upload of exp_20260917T084802Z_lpt_medium_8_0_r1094423377_0
+client-phone-1      | 17-Sep-2026 09:04:55 [boincserver] Computation for task exp_20260917T084802Z_lpt_long_6_0 finished
+client-phone-1      | 17-Sep-2026 09:04:55 [boincserver] Starting task exp_20260917T084802Z_lpt_medium_9_0
+client-phone-1      | 17-Sep-2026 09:04:57 [boincserver] Started upload of exp_20260917T084802Z_lpt_long_6_0_r714319183_0
+client-phone-1      | 17-Sep-2026 09:04:59 [boincserver] Finished upload of exp_20260917T084802Z_lpt_long_6_0_r714319183_0
+client-phone-2-1    | 17-Sep-2026 09:03:03 [boincserver] Sending scheduler request: To fetch work.
+client-phone-2-1    | 17-Sep-2026 09:03:03 [boincserver] Requesting new tasks for CPU
+client-phone-2-1    | 17-Sep-2026 09:03:05 [boincserver] Scheduler request completed: got 0 new tasks
+client-phone-2-1    | 17-Sep-2026 09:03:05 [boincserver] No tasks sent
+client-phone-2-1    | 17-Sep-2026 09:03:05 [boincserver] This computer has reached a limit on tasks in progress
+client-phone-2-1    | 17-Sep-2026 09:03:05 [boincserver] Project requested delay of 7 seconds
+client-phone-2-1    | 17-Sep-2026 09:04:50 [boincserver] Computation for task exp_20260917T084802Z_lpt_long_5_0 finished
+client-phone-2-1    | 17-Sep-2026 09:04:50 [boincserver] Starting task exp_20260917T084802Z_lpt_medium_10_0
+client-phone-2-1    | 17-Sep-2026 09:04:52 [boincserver] Started upload of exp_20260917T084802Z_lpt_long_5_0_r2065946470_0
+client-phone-2-1    | 17-Sep-2026 09:04:54 [boincserver] Finished upload of exp_20260917T084802Z_lpt_long_5_0_r2065946470_0
+client-phone-2-1    | 17-Sep-2026 09:04:55 [boincserver] Sending scheduler request: To report completed tasks.
+client-desktop-1    | 17-Sep-2026 09:03:08 [boincserver] Requesting new tasks for CPU
+client-desktop-1    | 17-Sep-2026 09:03:10 [boincserver] Scheduler request completed: got 1 new tasks
+client-desktop-1    | 17-Sep-2026 09:03:10 [boincserver] Project requested delay of 7 seconds
+client-desktop-1    | 17-Sep-2026 09:03:20 [boincserver] Sending scheduler request: To fetch work.
+client-phone-1      | 17-Sep-2026 09:05:00 [boincserver] Sending scheduler request: To report completed tasks.
+client-phone-1      | 17-Sep-2026 09:05:00 [boincserver] Reporting 1 completed tasks
+client-phone-1      | 17-Sep-2026 09:05:00 [boincserver] Requesting new tasks for CPU
+client-phone-1      | 17-Sep-2026 09:05:06 [boincserver] Scheduler request completed: got 0 new tasks
+client-phone-1      | 17-Sep-2026 09:05:06 [boincserver] Project has no tasks available
+client-phone-1      | 17-Sep-2026 09:05:06 [boincserver] Project requested delay of 7 seconds
+client-phone-1      | 17-Sep-2026 09:05:16 [boincserver] Sending scheduler request: To fetch work.
+client-cluster-2-1  | 17-Sep-2026 09:03:39 [boincserver] Finished upload of exp_20260917T084802Z_lpt_medium_8_0_r1094423377_0
+client-cluster-2-1  | 17-Sep-2026 09:03:42 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_3_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:03:42 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-2-1  | 17-Sep-2026 09:03:42 [boincserver] Starting task exp_20260917T084802Z_lpt_short_7_0
+client-cluster-2-1  | 17-Sep-2026 09:03:43 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_8_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:03:43 [boincserver] Sending scheduler request: To report completed tasks.
+client-cluster-2-1  | 17-Sep-2026 09:03:43 [boincserver] Reporting 3 completed tasks
+client-cluster-2-1  | 17-Sep-2026 09:03:43 [boincserver] Requesting new tasks for CPU
+client-cluster-2-1  | 17-Sep-2026 09:03:44 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_3_0_r875754666_0
+client-cluster-2-1  | 17-Sep-2026 09:03:45 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_3_0_r875754666_0
+client-cluster-2-1  | 17-Sep-2026 09:03:45 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_8_0_r1212563166_0
+client-cluster-2-1  | 17-Sep-2026 09:03:45 [boincserver] Scheduler request completed: got 3 new tasks
+client-cluster-2-1  | 17-Sep-2026 09:03:45 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:03:47 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_8_0_r1212563166_0
+client-cluster-2-1  | 17-Sep-2026 09:03:47 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-phone-1      | 17-Sep-2026 09:05:16 [boincserver] Requesting new tasks for CPU
+client-phone-1      | 17-Sep-2026 09:05:18 [boincserver] Scheduler request completed: got 0 new tasks
+client-phone-1      | 17-Sep-2026 09:05:18 [boincserver] Project has no tasks available
+client-phone-1      | 17-Sep-2026 09:05:18 [boincserver] Project requested delay of 7 seconds
+client-phone-2-1    | 17-Sep-2026 09:04:55 [boincserver] Reporting 1 completed tasks
+client-phone-2-1    | 17-Sep-2026 09:04:55 [boincserver] Requesting new tasks for CPU
+client-phone-2-1    | 17-Sep-2026 09:04:57 [boincserver] Scheduler request completed: got 0 new tasks
+client-phone-2-1    | 17-Sep-2026 09:04:57 [boincserver] Project has no tasks available
+client-phone-2-1    | 17-Sep-2026 09:04:57 [boincserver] Project requested delay of 7 seconds
+client-phone-1      | 17-Sep-2026 09:05:29 [boincserver] Computation for task exp_20260917T084802Z_lpt_medium_9_0 finished
+client-phone-1      | 17-Sep-2026 09:05:31 [boincserver] Started upload of exp_20260917T084802Z_lpt_medium_9_0_r1303087922_0
+client-phone-1      | 17-Sep-2026 09:05:33 [boincserver] Finished upload of exp_20260917T084802Z_lpt_medium_9_0_r1303087922_0
+client-phone-1      | 17-Sep-2026 09:05:33 [boincserver] Sending scheduler request: To report completed tasks.
+client-phone-1      | 17-Sep-2026 09:05:33 [boincserver] Reporting 1 completed tasks
+client-phone-1      | 17-Sep-2026 09:05:33 [boincserver] Requesting new tasks for CPU
+client-cluster-2-1  | 17-Sep-2026 09:03:47 [boincserver] Starting task exp_20260917T084802Z_lpt_short_13_0
+client-cluster-2-1  | 17-Sep-2026 09:03:51 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_7_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:03:51 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-2-1  | 17-Sep-2026 09:03:51 [boincserver] Starting task exp_20260917T084802Z_lpt_short_14_0
+client-cluster-2-1  | 17-Sep-2026 09:03:53 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_7_0_r17921556_0
+client-cluster-2-1  | 17-Sep-2026 09:03:55 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_7_0_r17921556_0
+client-phone-1      | 17-Sep-2026 09:05:44 [boincserver] Scheduler request completed: got 0 new tasks
+client-phone-1      | 17-Sep-2026 09:05:44 [boincserver] Project has no tasks available
+client-desktop-1    | 17-Sep-2026 09:03:20 [boincserver] Requesting new tasks for CPU
+client-desktop-1    | 17-Sep-2026 09:03:22 [boincserver] Scheduler request completed: got 0 new tasks
+client-desktop-1    | 17-Sep-2026 09:03:22 [boincserver] No tasks sent
+client-desktop-1    | 17-Sep-2026 09:03:22 [boincserver] This computer has reached a limit on tasks in progress
+client-desktop-1    | 17-Sep-2026 09:03:22 [boincserver] Project requested delay of 7 seconds
+client-desktop-1    | 17-Sep-2026 09:03:33 [boincserver] Computation for task exp_20260917T084802Z_lpt_medium_12_0 finished
+client-phone-2-1    | 17-Sep-2026 09:05:05 [boincserver] Sending scheduler request: To fetch work.
+client-phone-2-1    | 17-Sep-2026 09:05:05 [boincserver] Requesting new tasks for CPU
+client-phone-2-1    | 17-Sep-2026 09:05:07 [boincserver] Scheduler request completed: got 0 new tasks
+client-phone-2-1    | 17-Sep-2026 09:05:07 [boincserver] Project has no tasks available
+client-phone-2-1    | 17-Sep-2026 09:05:07 [boincserver] Project requested delay of 7 seconds
+client-phone-2-1    | 17-Sep-2026 09:05:23 [boincserver] Computation for task exp_20260917T084802Z_lpt_medium_10_0 finished
+client-low-power-1  | 17-Sep-2026 09:02:23 [---]    max memory usage when active: 8929.14 MB
+client-low-power-1  | 17-Sep-2026 09:02:23 [---]    max memory usage when idle: 8929.14 MB
+client-low-power-1  | 17-Sep-2026 09:02:23 [---]    max disk usage: 2.00 GB
+client-low-power-1  | 17-Sep-2026 09:02:23 [---]    don't use GPU while active
+client-low-power-1  | 17-Sep-2026 09:02:23 [---]    suspend work if non-BOINC CPU load exceeds 25%
+client-low-power-1  | 17-Sep-2026 09:02:23 [---]    (to change preferences, visit a project web site or select Preferences in the Manager)
+client-phone-1      | 17-Sep-2026 09:05:44 [boincserver] Project requested delay of 7 seconds
+client-low-power-1  | 17-Sep-2026 09:02:27 [http://boincserver.local/boincserver/] Fetching scheduler list
+client-low-power-1  | 17-Sep-2026 09:02:34 [http://boincserver.local/boincserver/] Master file download succeeded
+client-low-power-1  | 17-Sep-2026 09:02:39 [http://boincserver.local/boincserver/] Sending scheduler request: Project initialization.
+client-low-power-1  | 17-Sep-2026 09:02:39 [http://boincserver.local/boincserver/] Requesting new tasks for CPU
+client-low-power-1  | 17-Sep-2026 09:02:41 [boincserver] Scheduler request completed: got 1 new tasks
+client-low-power-1  | 17-Sep-2026 09:02:41 [boincserver] Project requested delay of 7 seconds
+client-low-power-1  | 17-Sep-2026 09:02:43 [boincserver] Started download of hybrid_synthetic_1.0_aarch64-unknown-linux-gnu
+client-low-power-1  | 17-Sep-2026 09:02:43 [boincserver] Started download of hybrid_synthetic_input.txt
+client-cluster-1    | 17-Sep-2026 09:03:05 [boincserver] Project requested delay of 7 seconds
+client-cluster-1    | 17-Sep-2026 09:03:15 [boincserver] Sending scheduler request: To fetch work.
+client-cluster-1    | 17-Sep-2026 09:03:15 [boincserver] Requesting new tasks for CPU
+client-cluster-1    | 17-Sep-2026 09:03:17 [boincserver] Scheduler request completed: got 0 new tasks
+client-cluster-1    | 17-Sep-2026 09:03:17 [boincserver] No tasks sent
+client-cluster-1    | 17-Sep-2026 09:03:17 [boincserver] This computer has reached a limit on tasks in progress
+client-low-power-1  | 17-Sep-2026 09:02:45 [boincserver] Finished download of hybrid_synthetic_1.0_aarch64-unknown-linux-gnu
+client-low-power-1  | 17-Sep-2026 09:02:45 [boincserver] Finished download of hybrid_synthetic_input.txt
+client-low-power-1  | 17-Sep-2026 09:02:45 [boincserver] Starting task exp_20260917T084802Z_lpt_long_4_0
+client-low-power-1  | 17-Sep-2026 09:02:51 [boincserver] Sending scheduler request: To fetch work.
+client-low-power-1  | 17-Sep-2026 09:02:51 [boincserver] Requesting new tasks for CPU
+client-phone-2-1    | 17-Sep-2026 09:05:25 [boincserver] Started upload of exp_20260917T084802Z_lpt_medium_10_0_r1629267418_0
+client-phone-2-1    | 17-Sep-2026 09:05:27 [boincserver] Finished upload of exp_20260917T084802Z_lpt_medium_10_0_r1629267418_0
+client-phone-2-1    | 17-Sep-2026 09:05:27 [boincserver] Sending scheduler request: To report completed tasks.
+client-phone-2-1    | 17-Sep-2026 09:05:27 [boincserver] Reporting 1 completed tasks
+client-phone-2-1    | 17-Sep-2026 09:05:27 [boincserver] Requesting new tasks for CPU
+client-phone-2-1    | 17-Sep-2026 09:05:29 [boincserver] Scheduler request completed: got 0 new tasks
+client-desktop-1    | 17-Sep-2026 09:03:33 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-desktop-1    | 17-Sep-2026 09:03:33 [boincserver] Starting task exp_20260917T084802Z_lpt_short_1_0
+client-desktop-1    | 17-Sep-2026 09:03:35 [boincserver] Started upload of exp_20260917T084802Z_lpt_medium_12_0_r383211139_0
+client-desktop-1    | 17-Sep-2026 09:03:37 [boincserver] Finished upload of exp_20260917T084802Z_lpt_medium_12_0_r383211139_0
+client-desktop-1    | 17-Sep-2026 09:03:37 [boincserver] Sending scheduler request: To report completed tasks.
+client-phone-2-1    | 17-Sep-2026 09:05:29 [boincserver] Project has no tasks available
+client-phone-2-1    | 17-Sep-2026 09:05:29 [boincserver] Project requested delay of 7 seconds
+client-phone-2-1    | 17-Sep-2026 09:05:39 [boincserver] Sending scheduler request: To fetch work.
+client-phone-2-1    | 17-Sep-2026 09:05:39 [boincserver] Requesting new tasks for CPU
+client-phone-2-1    | 17-Sep-2026 09:05:41 [boincserver] Scheduler request completed: got 0 new tasks
+client-phone-2-1    | 17-Sep-2026 09:05:41 [boincserver] Project has no tasks available
+client-cluster-2-1  | 17-Sep-2026 09:03:55 [boincserver] Sending scheduler request: To report completed tasks.
+client-cluster-2-1  | 17-Sep-2026 09:03:55 [boincserver] Reporting 3 completed tasks
+client-cluster-2-1  | 17-Sep-2026 09:03:55 [boincserver] Requesting new tasks for CPU
+client-cluster-2-1  | 17-Sep-2026 09:03:56 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_13_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:03:56 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-2-1  | 17-Sep-2026 09:03:56 [boincserver] Starting task exp_20260917T084802Z_lpt_short_15_0
+client-cluster-2-1  | 17-Sep-2026 09:03:57 [boincserver] Scheduler request completed: got 1 new tasks
+client-cluster-2-1  | 17-Sep-2026 09:03:57 [boincserver] Project requested delay of 7 seconds
+client-cluster-1    | 17-Sep-2026 09:03:17 [boincserver] Project requested delay of 7 seconds
+client-cluster-1    | 17-Sep-2026 09:03:26 [boincserver] Computation for task exp_20260917T084802Z_lpt_medium_1_0 finished
+client-cluster-1    | 17-Sep-2026 09:03:26 [boincserver] Starting task exp_20260917T084802Z_lpt_medium_2_0
+client-cluster-1    | 17-Sep-2026 09:03:27 [boincserver] Computation for task exp_20260917T084802Z_lpt_medium_4_0 finished
+client-cluster-1    | 17-Sep-2026 09:03:27 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-1    | 17-Sep-2026 09:03:27 [boincserver] Starting task exp_20260917T084802Z_lpt_short_6_0
+client-cluster-1    | 17-Sep-2026 09:03:28 [boincserver] Started upload of exp_20260917T084802Z_lpt_medium_1_0_r475712965_0
+client-cluster-1    | 17-Sep-2026 09:03:28 [boincserver] Computation for task exp_20260917T084802Z_lpt_medium_3_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:03:58 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_13_0_r2023949493_0
+client-cluster-2-1  | 17-Sep-2026 09:03:58 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_14_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:03:59 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-1    | 17-Sep-2026 09:03:28 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-1    | 17-Sep-2026 09:03:28 [boincserver] Starting task exp_20260917T084802Z_lpt_short_2_0
+client-cluster-1    | 17-Sep-2026 09:03:29 [boincserver] Started upload of exp_20260917T084802Z_lpt_medium_4_0_r538515161_0
+client-cluster-1    | 17-Sep-2026 09:03:30 [boincserver] Finished upload of exp_20260917T084802Z_lpt_medium_1_0_r475712965_0
+client-cluster-1    | 17-Sep-2026 09:03:30 [boincserver] Finished upload of exp_20260917T084802Z_lpt_medium_4_0_r538515161_0
+client-cluster-1    | 17-Sep-2026 09:03:30 [boincserver] Started upload of exp_20260917T084802Z_lpt_medium_3_0_r1346004092_0
+client-cluster-1    | 17-Sep-2026 09:03:32 [boincserver] Finished upload of exp_20260917T084802Z_lpt_medium_3_0_r1346004092_0
+client-cluster-1    | 17-Sep-2026 09:03:33 [boincserver] Sending scheduler request: To report completed tasks.
+client-desktop-1    | 17-Sep-2026 09:03:37 [boincserver] Reporting 1 completed tasks
+client-desktop-1    | 17-Sep-2026 09:03:37 [boincserver] Requesting new tasks for CPU
+client-desktop-1    | 17-Sep-2026 09:03:44 [boincserver] Scheduler request completed: got 1 new tasks
+client-desktop-1    | 17-Sep-2026 09:03:44 [boincserver] Project requested delay of 7 seconds
+client-desktop-1    | 17-Sep-2026 09:03:46 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_1_0 finished
+client-phone-2-1    | 17-Sep-2026 09:05:41 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:03:59 [boincserver] Starting task exp_20260917T084802Z_lpt_short_18_0
+client-cluster-2-1  | 17-Sep-2026 09:04:00 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_13_0_r2023949493_0
+client-cluster-2-1  | 17-Sep-2026 09:04:00 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_14_0_r1848647628_0
+client-cluster-2-1  | 17-Sep-2026 09:04:02 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_14_0_r1848647628_0
+client-cluster-1    | 17-Sep-2026 09:03:33 [boincserver] Reporting 3 completed tasks
+client-cluster-1    | 17-Sep-2026 09:03:33 [boincserver] Requesting new tasks for CPU
+client-cluster-1    | 17-Sep-2026 09:03:35 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_6_0 finished
+client-cluster-1    | 17-Sep-2026 09:03:35 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-2-1  | 17-Sep-2026 09:04:06 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_15_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:04:07 [boincserver] Computation for task exp_20260917T084802Z_lpt_medium_11_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:04:08 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_15_0_r1041883873_0
+client-cluster-2-1  | 17-Sep-2026 09:04:08 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_18_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:04:08 [boincserver] Sending scheduler request: To fetch work.
+client-cluster-2-1  | 17-Sep-2026 09:04:08 [boincserver] Reporting 2 completed tasks
+client-cluster-2-1  | 17-Sep-2026 09:04:08 [boincserver] Requesting new tasks for CPU
+client-low-power-1  | 17-Sep-2026 09:02:53 [boincserver] Scheduler request completed: got 1 new tasks
+client-low-power-1  | 17-Sep-2026 09:02:53 [boincserver] Project requested delay of 7 seconds
+client-low-power-1  | 17-Sep-2026 09:03:03 [boincserver] Sending scheduler request: To fetch work.
+client-low-power-1  | 17-Sep-2026 09:03:03 [boincserver] Requesting new tasks for CPU
+client-low-power-1  | 17-Sep-2026 09:03:05 [boincserver] Scheduler request completed: got 0 new tasks
+client-low-power-1  | 17-Sep-2026 09:03:05 [boincserver] No tasks sent
+client-cluster-2-1  | 17-Sep-2026 09:04:09 [boincserver] Started upload of exp_20260917T084802Z_lpt_medium_11_0_r1783864852_0
+client-cluster-2-1  | 17-Sep-2026 09:04:10 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_15_0_r1041883873_0
+client-cluster-2-1  | 17-Sep-2026 09:04:10 [boincserver] Finished upload of exp_20260917T084802Z_lpt_medium_11_0_r1783864852_0
+client-cluster-2-1  | 17-Sep-2026 09:04:10 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_18_0_r826480412_0
+client-cluster-2-1  | 17-Sep-2026 09:04:10 [boincserver] Scheduler request completed: got 0 new tasks
+client-cluster-2-1  | 17-Sep-2026 09:04:10 [boincserver] Project has no tasks available
+client-low-power-1  | 17-Sep-2026 09:03:05 [boincserver] This computer has reached a limit on tasks in progress
+client-low-power-1  | 17-Sep-2026 09:03:05 [boincserver] Project requested delay of 7 seconds
+client-low-power-1  | 17-Sep-2026 09:04:48 [boincserver] Computation for task exp_20260917T084802Z_lpt_long_4_0 finished
+client-low-power-1  | 17-Sep-2026 09:04:48 [boincserver] Starting task exp_20260917T084802Z_lpt_medium_7_0
+client-low-power-1  | 17-Sep-2026 09:04:50 [boincserver] Started upload of exp_20260917T084802Z_lpt_long_4_0_r1981465697_0
+client-desktop-1    | 17-Sep-2026 09:03:46 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-desktop-1    | 17-Sep-2026 09:03:46 [boincserver] Starting task exp_20260917T084802Z_lpt_short_5_0
+client-desktop-1    | 17-Sep-2026 09:03:48 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_1_0_r1737650424_0
+client-desktop-1    | 17-Sep-2026 09:03:50 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_1_0_r1737650424_0
+client-desktop-1    | 17-Sep-2026 09:03:55 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_5_0 finished
+client-desktop-1    | 17-Sep-2026 09:03:55 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-low-power-1  | 17-Sep-2026 09:04:52 [boincserver] Finished upload of exp_20260917T084802Z_lpt_long_4_0_r1981465697_0
+client-low-power-1  | 17-Sep-2026 09:04:55 [boincserver] Sending scheduler request: To report completed tasks.
+client-low-power-1  | 17-Sep-2026 09:04:55 [boincserver] Reporting 1 completed tasks
+client-low-power-1  | 17-Sep-2026 09:04:55 [boincserver] Requesting new tasks for CPU
+client-low-power-1  | 17-Sep-2026 09:04:57 [boincserver] Scheduler request completed: got 0 new tasks
+client-low-power-1  | 17-Sep-2026 09:04:57 [boincserver] Project has no tasks available
+client-low-power-1  | 17-Sep-2026 09:04:57 [boincserver] Project requested delay of 7 seconds
+client-low-power-1  | 17-Sep-2026 09:05:07 [boincserver] Sending scheduler request: To fetch work.
+client-cluster-2-1  | 17-Sep-2026 09:04:10 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:04:12 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_18_0_r826480412_0
+client-cluster-2-1  | 17-Sep-2026 09:04:25 [boincserver] Sending scheduler request: To report completed tasks.
+client-cluster-2-1  | 17-Sep-2026 09:04:25 [boincserver] Reporting 3 completed tasks
+client-cluster-2-1  | 17-Sep-2026 09:04:25 [boincserver] Requesting new tasks for CPU
+client-cluster-2-1  | 17-Sep-2026 09:04:27 [boincserver] Scheduler request completed: got 0 new tasks
+client-cluster-2-1  | 17-Sep-2026 09:04:27 [boincserver] Project has no tasks available
+client-cluster-2-1  | 17-Sep-2026 09:04:27 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:04:37 [boincserver] Sending scheduler request: To fetch work.
+client-low-power-1  | 17-Sep-2026 09:05:07 [boincserver] Requesting new tasks for CPU
+client-low-power-1  | 17-Sep-2026 09:05:14 [boincserver] Scheduler request completed: got 0 new tasks
+client-low-power-1  | 17-Sep-2026 09:05:14 [boincserver] Project has no tasks available
+client-low-power-1  | 17-Sep-2026 09:05:14 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:04:37 [boincserver] Requesting new tasks for CPU
+client-cluster-2-1  | 17-Sep-2026 09:04:39 [boincserver] Scheduler request completed: got 0 new tasks
+client-cluster-2-1  | 17-Sep-2026 09:04:39 [boincserver] Project has no tasks available
+client-cluster-2-1  | 17-Sep-2026 09:04:39 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:04:48 [boincserver] Computation for task exp_20260917T084802Z_lpt_long_2_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:04:50 [boincserver] Started upload of exp_20260917T084802Z_lpt_long_2_0_r341264738_0
+client-cluster-2-1  | 17-Sep-2026 09:04:52 [boincserver] Finished upload of exp_20260917T084802Z_lpt_long_2_0_r341264738_0
+client-desktop-1    | 17-Sep-2026 09:03:55 [boincserver] Starting task exp_20260917T084802Z_lpt_short_12_0
+client-desktop-1    | 17-Sep-2026 09:03:55 [boincserver] Sending scheduler request: To report completed tasks.
+client-desktop-1    | 17-Sep-2026 09:03:55 [boincserver] Reporting 1 completed tasks
+client-desktop-1    | 17-Sep-2026 09:03:55 [boincserver] Requesting new tasks for CPU
+client-desktop-1    | 17-Sep-2026 09:03:57 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_5_0_r1067293932_0
+client-desktop-1    | 17-Sep-2026 09:03:57 [boincserver] Scheduler request completed: got 1 new tasks
+client-desktop-1    | 17-Sep-2026 09:03:57 [boincserver] Project requested delay of 7 seconds
+client-desktop-1    | 17-Sep-2026 09:03:59 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_5_0_r1067293932_0
+client-desktop-1    | 17-Sep-2026 09:04:04 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_12_0 finished
+client-desktop-1    | 17-Sep-2026 09:04:04 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-desktop-1    | 17-Sep-2026 09:04:04 [boincserver] Starting task exp_20260917T084802Z_lpt_short_17_0
+client-desktop-1    | 17-Sep-2026 09:04:06 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_12_0_r631603189_0
+client-cluster-2-1  | 17-Sep-2026 09:04:54 [boincserver] Sending scheduler request: To report completed tasks.
+client-cluster-2-1  | 17-Sep-2026 09:04:54 [boincserver] Reporting 1 completed tasks
+client-desktop-1    | 17-Sep-2026 09:04:08 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_12_0_r631603189_0
+client-desktop-1    | 17-Sep-2026 09:04:12 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_17_0 finished
+client-desktop-1    | 17-Sep-2026 09:04:12 [boincserver] Sending scheduler request: To report completed tasks.
+client-desktop-1    | 17-Sep-2026 09:04:12 [boincserver] Reporting 2 completed tasks
+client-desktop-1    | 17-Sep-2026 09:04:12 [boincserver] Requesting new tasks for CPU
+client-desktop-1    | 17-Sep-2026 09:04:14 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_17_0_r312960088_0
+client-low-power-1  | 17-Sep-2026 09:05:21 [boincserver] Computation for task exp_20260917T084802Z_lpt_medium_7_0 finished
+client-low-power-1  | 17-Sep-2026 09:05:23 [boincserver] Started upload of exp_20260917T084802Z_lpt_medium_7_0_r1264403355_0
+client-cluster-1    | 17-Sep-2026 09:03:35 [boincserver] Starting task exp_20260917T084802Z_lpt_short_4_0
+client-cluster-1    | 17-Sep-2026 09:03:36 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_2_0 finished
+client-cluster-1    | 17-Sep-2026 09:03:37 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_6_0_r1261863987_0
+client-low-power-1  | 17-Sep-2026 09:05:25 [boincserver] Finished upload of exp_20260917T084802Z_lpt_medium_7_0_r1264403355_0
+client-low-power-1  | 17-Sep-2026 09:05:29 [boincserver] Sending scheduler request: To report completed tasks.
+client-low-power-1  | 17-Sep-2026 09:05:29 [boincserver] Reporting 1 completed tasks
+client-low-power-1  | 17-Sep-2026 09:05:29 [boincserver] Requesting new tasks for CPU
+client-low-power-1  | 17-Sep-2026 09:05:36 [boincserver] Scheduler request completed: got 0 new tasks
+client-cluster-1    | 17-Sep-2026 09:03:38 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_2_0_r2035625353_0
+client-low-power-1  | 17-Sep-2026 09:05:36 [boincserver] Project has no tasks available
+client-low-power-1  | 17-Sep-2026 09:05:36 [boincserver] Project requested delay of 7 seconds
+client-cluster-1    | 17-Sep-2026 09:03:39 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_6_0_r1261863987_0
+client-cluster-1    | 17-Sep-2026 09:03:39 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_2_0_r2035625353_0
+client-cluster-1    | 17-Sep-2026 09:03:40 [boincserver] Scheduler request completed: got 3 new tasks
+client-cluster-1    | 17-Sep-2026 09:03:40 [boincserver] Project requested delay of 7 seconds
+client-cluster-1    | 17-Sep-2026 09:03:42 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-1    | 17-Sep-2026 09:03:42 [boincserver] Starting task exp_20260917T084802Z_lpt_short_11_0
+client-cluster-1    | 17-Sep-2026 09:03:43 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_4_0 finished
+client-cluster-2-1  | 17-Sep-2026 09:04:54 [boincserver] Requesting new tasks for CPU
+client-cluster-2-1  | 17-Sep-2026 09:04:56 [boincserver] Scheduler request completed: got 0 new tasks
+client-cluster-2-1  | 17-Sep-2026 09:04:56 [boincserver] Project has no tasks available
+client-cluster-2-1  | 17-Sep-2026 09:04:56 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:05:06 [boincserver] Sending scheduler request: To fetch work.
+client-cluster-2-1  | 17-Sep-2026 09:05:06 [boincserver] Requesting new tasks for CPU
+client-cluster-1    | 17-Sep-2026 09:03:43 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-1    | 17-Sep-2026 09:03:43 [boincserver] Starting task exp_20260917T084802Z_lpt_short_9_0
+client-cluster-1    | 17-Sep-2026 09:03:46 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_4_0_r1724967206_0
+client-cluster-1    | 17-Sep-2026 09:03:48 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_4_0_r1724967206_0
+client-cluster-1    | 17-Sep-2026 09:03:51 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_11_0 finished
+client-cluster-1    | 17-Sep-2026 09:03:51 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-1    | 17-Sep-2026 09:03:51 [boincserver] Starting task exp_20260917T084802Z_lpt_short_10_0
+client-cluster-1    | 17-Sep-2026 09:03:51 [boincserver] Sending scheduler request: To report completed tasks.
+client-cluster-1    | 17-Sep-2026 09:03:51 [boincserver] Reporting 3 completed tasks
+client-cluster-1    | 17-Sep-2026 09:03:51 [boincserver] Requesting new tasks for CPU
+client-cluster-1    | 17-Sep-2026 09:03:52 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_9_0 finished
+client-cluster-1    | 17-Sep-2026 09:03:53 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_11_0_r1011793265_0
+client-cluster-1    | 17-Sep-2026 09:03:54 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_9_0_r660689593_0
+client-cluster-1    | 17-Sep-2026 09:03:55 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_11_0_r1011793265_0
+client-cluster-1    | 17-Sep-2026 09:03:55 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_9_0_r660689593_0
+client-cluster-1    | 17-Sep-2026 09:03:58 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_10_0 finished
+client-cluster-1    | 17-Sep-2026 09:03:58 [boincserver] Scheduler request completed: got 1 new tasks
+client-cluster-1    | 17-Sep-2026 09:03:58 [boincserver] Project requested delay of 7 seconds
+client-cluster-2-1  | 17-Sep-2026 09:05:14 [boincserver] Scheduler request completed: got 0 new tasks
+client-cluster-2-1  | 17-Sep-2026 09:05:14 [boincserver] Project has no tasks available
+client-cluster-2-1  | 17-Sep-2026 09:05:14 [boincserver] Project requested delay of 7 seconds
+client-desktop-1    | 17-Sep-2026 09:04:14 [boincserver] Scheduler request completed: got 0 new tasks
+client-desktop-1    | 17-Sep-2026 09:04:14 [boincserver] Project has no tasks available
+client-desktop-1    | 17-Sep-2026 09:04:14 [boincserver] Project requested delay of 7 seconds
+client-desktop-1    | 17-Sep-2026 09:04:16 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_17_0_r312960088_0
+client-desktop-1    | 17-Sep-2026 09:04:24 [boincserver] Sending scheduler request: To report completed tasks.
+client-desktop-1    | 17-Sep-2026 09:04:24 [boincserver] Reporting 1 completed tasks
+client-desktop-1    | 17-Sep-2026 09:04:24 [boincserver] Requesting new tasks for CPU
+client-desktop-1    | 17-Sep-2026 09:04:26 [boincserver] Scheduler request completed: got 0 new tasks
+client-desktop-1    | 17-Sep-2026 09:04:26 [boincserver] Project has no tasks available
+client-desktop-1    | 17-Sep-2026 09:04:26 [boincserver] Project requested delay of 7 seconds
+client-desktop-1    | 17-Sep-2026 09:04:35 [boincserver] Sending scheduler request: To fetch work.
+client-desktop-1    | 17-Sep-2026 09:04:35 [boincserver] Requesting new tasks for CPU
+client-desktop-1    | 17-Sep-2026 09:04:37 [boincserver] Scheduler request completed: got 0 new tasks
+client-desktop-1    | 17-Sep-2026 09:04:37 [boincserver] Project has no tasks available
+client-desktop-1    | 17-Sep-2026 09:04:37 [boincserver] Project requested delay of 7 seconds
+client-cluster-1    | 17-Sep-2026 09:04:00 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_10_0_r384243213_0
+client-cluster-1    | 17-Sep-2026 09:04:00 [boincserver] Computation for task exp_20260917T084802Z_lpt_medium_2_0 finished
+client-desktop-1    | 17-Sep-2026 09:04:48 [boincserver] Computation for task exp_20260917T084802Z_lpt_long_3_0 finished
+client-desktop-1    | 17-Sep-2026 09:04:50 [boincserver] Started upload of exp_20260917T084802Z_lpt_long_3_0_r266897510_0
+client-cluster-1    | 17-Sep-2026 09:04:00 [boincserver] Elapsed time limit 50.000000 < 120.000000; setting to 43200.000000
+client-cluster-1    | 17-Sep-2026 09:04:00 [boincserver] Starting task exp_20260917T084802Z_lpt_short_16_0
+client-cluster-1    | 17-Sep-2026 09:04:02 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_10_0_r384243213_0
+client-cluster-1    | 17-Sep-2026 09:04:02 [boincserver] Started upload of exp_20260917T084802Z_lpt_medium_2_0_r698856188_0
+client-cluster-1    | 17-Sep-2026 09:04:04 [boincserver] Finished upload of exp_20260917T084802Z_lpt_medium_2_0_r698856188_0
+client-cluster-1    | 17-Sep-2026 09:04:08 [boincserver] Computation for task exp_20260917T084802Z_lpt_short_16_0 finished
+client-cluster-1    | 17-Sep-2026 09:04:08 [boincserver] Sending scheduler request: To report completed tasks.
+client-cluster-1    | 17-Sep-2026 09:04:08 [boincserver] Reporting 4 completed tasks
+client-cluster-1    | 17-Sep-2026 09:04:08 [boincserver] Requesting new tasks for CPU
+client-cluster-1    | 17-Sep-2026 09:04:15 [boincserver] Started upload of exp_20260917T084802Z_lpt_short_16_0_r166118038_0
+client-cluster-1    | 17-Sep-2026 09:04:15 [boincserver] Scheduler request completed: got 0 new tasks
+client-cluster-1    | 17-Sep-2026 09:04:15 [boincserver] Project has no tasks available
+client-cluster-1    | 17-Sep-2026 09:04:15 [boincserver] Project requested delay of 7 seconds
+client-cluster-1    | 17-Sep-2026 09:04:17 [boincserver] Finished upload of exp_20260917T084802Z_lpt_short_16_0_r166118038_0
+client-cluster-1    | 17-Sep-2026 09:04:25 [boincserver] Sending scheduler request: To report completed tasks.
+client-cluster-1    | 17-Sep-2026 09:04:25 [boincserver] Reporting 1 completed tasks
+client-cluster-1    | 17-Sep-2026 09:04:25 [boincserver] Requesting new tasks for CPU
+client-cluster-1    | 17-Sep-2026 09:04:32 [boincserver] Scheduler request completed: got 0 new tasks
+client-cluster-1    | 17-Sep-2026 09:04:32 [boincserver] Project has no tasks available
+client-cluster-1    | 17-Sep-2026 09:04:32 [boincserver] Project requested delay of 7 seconds
+client-cluster-1    | 17-Sep-2026 09:04:42 [boincserver] Sending scheduler request: To fetch work.
+client-cluster-1    | 17-Sep-2026 09:04:42 [boincserver] Requesting new tasks for CPU
+client-cluster-1    | 17-Sep-2026 09:04:43 [boincserver] Computation for task exp_20260917T084802Z_lpt_long_1_0 finished
+client-cluster-1    | 17-Sep-2026 09:04:44 [boincserver] Scheduler request completed: got 0 new tasks
+client-desktop-1    | 17-Sep-2026 09:04:52 [boincserver] Finished upload of exp_20260917T084802Z_lpt_long_3_0_r266897510_0
+client-desktop-1    | 17-Sep-2026 09:04:52 [boincserver] Sending scheduler request: To report completed tasks.
+client-desktop-1    | 17-Sep-2026 09:04:52 [boincserver] Reporting 1 completed tasks
+client-desktop-1    | 17-Sep-2026 09:04:52 [boincserver] Requesting new tasks for CPU
+client-desktop-1    | 17-Sep-2026 09:04:54 [boincserver] Scheduler request completed: got 0 new tasks
+client-desktop-1    | 17-Sep-2026 09:04:54 [boincserver] Project has no tasks available
+client-desktop-1    | 17-Sep-2026 09:04:54 [boincserver] Project requested delay of 7 seconds
+client-desktop-1    | 17-Sep-2026 09:05:04 [boincserver] Sending scheduler request: To fetch work.
+client-cluster-1    | 17-Sep-2026 09:04:44 [boincserver] Project has no tasks available
+client-cluster-1    | 17-Sep-2026 09:04:44 [boincserver] Project requested delay of 7 seconds
+client-cluster-1    | 17-Sep-2026 09:04:45 [boincserver] Started upload of exp_20260917T084802Z_lpt_long_1_0_r498465031_0
+client-cluster-1    | 17-Sep-2026 09:04:47 [boincserver] Finished upload of exp_20260917T084802Z_lpt_long_1_0_r498465031_0
+client-cluster-1    | 17-Sep-2026 09:04:54 [boincserver] Sending scheduler request: To report completed tasks.
+client-cluster-1    | 17-Sep-2026 09:04:54 [boincserver] Reporting 1 completed tasks
+client-cluster-1    | 17-Sep-2026 09:04:54 [boincserver] Requesting new tasks for CPU
+client-cluster-1    | 17-Sep-2026 09:04:56 [boincserver] Scheduler request completed: got 0 new tasks
+client-cluster-1    | 17-Sep-2026 09:04:56 [boincserver] Project has no tasks available
+client-cluster-1    | 17-Sep-2026 09:04:56 [boincserver] Project requested delay of 7 seconds
+client-cluster-1    | 17-Sep-2026 09:05:05 [boincserver] Sending scheduler request: To fetch work.
+client-cluster-1    | 17-Sep-2026 09:05:05 [boincserver] Requesting new tasks for CPU
+client-cluster-1    | 17-Sep-2026 09:05:07 [boincserver] Scheduler request completed: got 0 new tasks
+client-cluster-1    | 17-Sep-2026 09:05:07 [boincserver] Project has no tasks available
+client-cluster-1    | 17-Sep-2026 09:05:07 [boincserver] Project requested delay of 7 seconds
+client-desktop-1    | 17-Sep-2026 09:05:04 [boincserver] Requesting new tasks for CPU
+client-desktop-1    | 17-Sep-2026 09:05:10 [boincserver] Scheduler request completed: got 0 new tasks
+client-desktop-1    | 17-Sep-2026 09:05:10 [boincserver] Project has no tasks available
+client-desktop-1    | 17-Sep-2026 09:05:10 [boincserver] Project requested delay of 7 seconds

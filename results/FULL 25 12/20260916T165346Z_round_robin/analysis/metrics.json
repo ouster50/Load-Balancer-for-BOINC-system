@@ -1,0 +1,108 @@
+{
+  "by_work_class": {
+    "long": {
+      "completed": 6,
+      "response_time_seconds": {
+        "count": 6,
+        "mean": 204.66666666666666,
+        "median": 205.5,
+        "p95": 218.25,
+        "p99": 220.45
+      },
+      "service_time_seconds": {
+        "count": 6,
+        "mean": 153.33333333333334,
+        "median": 155.5,
+        "p95": 165.25,
+        "p99": 166.65
+      }
+    },
+    "medium": {
+      "completed": 12,
+      "response_time_seconds": {
+        "count": 12,
+        "mean": 107.58333333333333,
+        "median": 107.5,
+        "p95": 128.5,
+        "p99": 132.9
+      },
+      "service_time_seconds": {
+        "count": 12,
+        "mean": 53.75,
+        "median": 51.5,
+        "p95": 69.0,
+        "p99": 69.0
+      }
+    },
+    "short": {
+      "completed": 18,
+      "response_time_seconds": {
+        "count": 18,
+        "mean": 100.44444444444444,
+        "median": 99.0,
+        "p95": 116.04999999999998,
+        "p99": 120.80999999999999
+      },
+      "service_time_seconds": {
+        "count": 18,
+        "mean": 29.22222222222222,
+        "median": 26.5,
+        "p95": 39.0,
+        "p99": 39.0
+      }
+    }
+  },
+  "cpu_efficiency": 0.8615613388056641,
+  "deadline_miss_rate": 0.0,
+  "deadline_misses": 0,
+  "jain_fairness_by_work_class": {
+    "long": 0.6,
+    "medium": 0.5714285714285714,
+    "short": 0.9642857142857143
+  },
+  "jain_fairness_completed_tasks": 0.8571428571428571,
+  "load_utilization_cv": 0.46475131516413876,
+  "makespan_seconds": 277.0,
+  "observation_seconds": 321.7603180408478,
+  "policy": "round_robin",
+  "queueing_delay_seconds": {
+    "count": 36,
+    "mean": 62.111111111111114,
+    "median": 62.0,
+    "p95": 77.25,
+    "p99": 85.54999999999998
+  },
+  "response_time_seconds": {
+    "count": 36,
+    "mean": 120.19444444444444,
+    "median": 104.5,
+    "p95": 209.25,
+    "p99": 217.14999999999998
+  },
+  "runtime_estimate_relative_error": {
+    "count": 36,
+    "mean": 0.40266499506998066,
+    "median": 0.37733975893896954,
+    "p95": 0.5741888243915478,
+    "p99": 0.6296886831868438
+  },
+  "scheduler_decision_time_ms": {
+    "count": 0,
+    "mean": null,
+    "median": null,
+    "p95": null,
+    "p99": null
+  },
+  "scheduler_overhead_percent": 0.0,
+  "service_time_seconds": {
+    "count": 36,
+    "mean": 58.083333333333336,
+    "median": 41.5,
+    "p95": 160.0,
+    "p99": 164.54999999999998
+  },
+  "tasks_completed": 36,
+  "tasks_failed_or_incomplete": 0,
+  "tasks_total": 36,
+  "throughput_tasks_per_second": 0.11188452391891832
+}
