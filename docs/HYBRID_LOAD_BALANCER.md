@@ -44,8 +44,7 @@
 Профили churn:
 
 - `stable`: все хосты работают стабильно на протяжении всего прогона
-- `moderate`: у каждого клиента ровно один цикл: выключение -> включение
-- `heavy`: у каждого клиента `CHURN_CYCLES` таких циклов
+- `heavy`: у каждого клиента `CHURN_CYCLES` циклов выключение -> включение
 
 Отказы рассинхронизированы: каждый клиент крутит свой цикл в фоне, старт для каждого сдвинут на `index × CHURN_STAGGER_SECONDS` (по умолчанию 8 секунд). Пока один хост недоступен, остальные могут продолжать работу
 
@@ -115,17 +114,17 @@ runtime_ratio_ij = clamp(effective_time_ij / target_runtime, 0.01, 100)
 size_affinity_ij = -abs(log(runtime_ratio_ij)) * availability_j
 host_fit_ij = (log(1 + host_speed_j) - log(1 + effective_time_ij)) * availability_j^2
 slow_host_long_penalty_ij = 0
-  if predicted_time_ij > 0.5 * target_runtime and host_speed_j < 2:
-    1.5 * (predicted_time_ij / target_runtime) * (2 - host_speed_j) / availability_j
-  elif predicted_time_ij > target_runtime and host_speed_j < 4:
-    0.5 * (predicted_time_ij / target_runtime - 1) * (4 - host_speed_j) / availability_j
+  if predicted_time_ij > target_runtime:
+    0.5 * (predicted_time_ij / target_runtime - 1)
+  elif predicted_time_ij > 0.5 * target_runtime:
+    1.5 * (predicted_time_ij / target_runtime)
 
 score_ij =
     (10 + 10 * availability_j) * boinc_score_ij
   + w_size * size_affinity_ij
   + w_deadline * target_runtime / delay_bound_i
   - w_runtime * log(1 + effective_time_ij / target_runtime)
-  + 0.05 * w_size * host_fit_ij
+  + w_size * host_fit_ij
   - w_runtime * slow_host_long_penalty_ij
 ```
 
@@ -226,4 +225,4 @@ results/<pair-id>_<policy>/
 ## 9. Эксперименты
 
 Для предотвращения появления шума делалось по 3-5 запусков с одинаковыми параметрами, после чего бралось среднее значение по каждой метрике.
-Было по группе запусков для каждого профиля CHURN: `stable`, `moderate`, `heavy`. Каждый раз прогонялись все 5 политик для корректного сравнения экспериментального подхода с остальными методами.
+Было по группе запусков для каждого профиля CHURN: `stable`, `heavy`. Каждый раз прогонялись все 5 политик для корректного сравнения экспериментального подхода с остальными методами.
